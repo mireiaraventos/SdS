@@ -3,15 +3,17 @@ Workflow of the GitHub repository SdS:
 ```
 SdS/
 ├── cluster/
-│   ├── Project.toml          ← tracked
-│   ├── Manifest.toml         ← tracked
+│   ├── Project.toml          ← tracked (Julia env)
+│   ├── Manifest.toml         ← tracked (Julia env)
 │   ├── simulation code       ← tracked
 │   ├── Slurm scripts         ← tracked
 │   └── num_results/          ← ignored
 │
 ├── local/
-│   ├── Project.toml          ← tracked
-│   ├── Manifest.toml         ← tracked
+|   ├── .venv/                ← ignored (Python env)
+|   ├── requirements.txt      ← tracked (Python env)
+│   ├── Project.toml          ← tracked (Julia env)
+│   ├── Manifest.toml         ← tracked (Julia env)
 │   ├── analysis/code         ← tracked
 │   └── num_results_loc/      ← ignored
 │
