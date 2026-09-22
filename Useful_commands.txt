@@ -2,11 +2,18 @@ Useful commands:
 
 ------------------
 Activate venv:
-.\.venv\Scripts\Activate.ps1
+
+# Local:
+.\.venv\Scripts\Activate.ps1  
+
+# Cluster:
+source .venv/bin/activate
+
 
 Deactivate venv:
 deactivate
 ------------------
+
 ------------------
 Run one simulation:
 julia --project=. SI_simulate_unif_grid.jl
