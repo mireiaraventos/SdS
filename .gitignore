@@ -7,3 +7,4 @@ cluster/num_results/
 
 # Python virtual environment
 local/.venv/
+cluster/.venv/
