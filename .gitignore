@@ -1,2 +1,6 @@
 # Literature is stored locally, not on GitHub
 literature/
+
+# Numerical simulation results
+local/num_results_loc/
+cluster/num_results/
