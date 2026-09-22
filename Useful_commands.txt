@@ -1,0 +1,12 @@
+Useful commands:
+
+------------------
+Activate venv:
+.\.venv\Scripts\Activate.ps1
+
+Deactivate venv:
+deactivate
+------------------
+------------------
+Run one simulation:
+julia --project=. SI_simulate_unif_grid.jl
