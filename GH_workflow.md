@@ -3,6 +3,8 @@ Workflow of the GitHub repository SdS:
 ```
 SdS/
 ├── cluster/
+|   ├── .venv/                ← ignored (Python env)
+|   ├── requirements.txt      ← tracked (Python env)
 │   ├── Project.toml          ← tracked (Julia env)
 │   ├── Manifest.toml         ← tracked (Julia env)
 │   ├── simulation code       ← tracked
