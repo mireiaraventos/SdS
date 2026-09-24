@@ -38,13 +38,13 @@ if __name__ == "__main__":
     print("Poincare computation finished.")
 
     fig, ax = pplot.plot(marker=".", s=0.5, xlim=[2., 4.], ylim=[-1.2, 1.2])
-    plt.savefig("local/pyoculus_examples/island1.png", dpi=300, bbox_inches="tight")  
+    plt.savefig("pyoculus_examples/island1.png", dpi=300, bbox_inches="tight")  
     # plt.show()
 
     fig, ax = plt.subplots(1,1)
 
     # add another higher perturbation 
-    maxwellboltzmann2 = {"m": 9, "n": -2, "d": 0.4, "type": "maxwell-boltzmann", "amplitude": 0.0001, "phase_poloidal": 0.1, "R":R0, "Z":Z0}
+    maxwellboltzmann2 = {"m": 9, "n": -2, "d": 0.4, "type": "maxwell-boltzmann", "amplitude": 0.01, "phase_poloidal": 0.1, "R":R0, "Z":Z0}
     myfield.add_perturbation(maxwellboltzmann2)
     mymap = CylindricalBfieldSection(myfield, R0=R0, Z0=Z0, rtol=1e-8)
     pplot = PoincarePlot.with_horizontal(mymap, 1.1, 40)
@@ -54,7 +54,7 @@ if __name__ == "__main__":
     print("Poincare computation finished.")
 
     fig, ax = pplot.plot(marker=".", s=0.5, xlim=[2., 4.], ylim=[-1.2, 1.2])
-    plt.savefig("local/pyoculus_examples/island2.png", dpi=300, bbox_inches="tight")  
+    plt.savefig("pyoculus_examples/island2.png", dpi=300, bbox_inches="tight")  
     # plt.show()
 
     # If you like the configuration, you can evaluate the covariant field
