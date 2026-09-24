@@ -1,0 +1,17 @@
+\section{Create a map}
+We want to create a map of the magnetic field lines using PyOculus. The magnetic configuration considered is described using slab geometry through
+\begin{equation}
+\psi=\psi_0(x)+\psi_1(x,y,z)\;,
+\end{equation}
+where $\psi_0$ describes the equilibrium configuration and $\psi_1$ is a perturbation of amplitude $\epsilon$ with poloidal and toroidal mode numbers $m$ and $n$:
+\begin{align}
+&\psi_0(x)=\frac{\iota'}{2}(x-x_0)^2\,,\\
+&\psi_1(x,y,z)=\epsilon(x)\cos\alpha\equiv \epsilon(x)\cos(my-nz)\,.
+\end{align}
+
+For a system with $x\in[0,1]$ containing an island at $x_s=0.5$, as a simple model for a perturbation localized around the rational surface, we choose
+\begin{equation}\label{pert_ampl}
+\epsilon(x)=\delta\cdot x(1-x)\,.
+\end{equation}
+
+

@@ -22,7 +22,7 @@ if __name__ == "__main__":
     myfield = AnalyticCylindricalBfield(R0, Z0, 1.01, 1.0, perturbations_args = [maxwellboltzmann])
 
     # From a field, we define a Map, by integrating field lines. 
-    # The CylindricalBfieldSection does this for  us. If we want to do winding numbers, 
+    # The CylindricalBfieldSection does this for us. If we want to do winding numbers, 
     # such a map needs to know the location of the magnetic axis. 
     mymap = CylindricalBfieldSection(myfield, R0=R0, Z0=Z0, rtol=1e-8)
 
@@ -34,24 +34,28 @@ if __name__ == "__main__":
 
     # We need to run the computation. This can take long and is not parallelized, so sorry for the wait. 
     print("Starting Poincare computation...")
-    pplot.compute(npts=150)
+    pplot.compute(npts=300)
     print("Poincare computation finished.")
 
     fig, ax = pplot.plot(marker=".", s=0.5, xlim=[2., 4.], ylim=[-1.2, 1.2])
-    plt.show()
+    plt.savefig("local/pyoculus_examples/island1.png", dpi=300, bbox_inches="tight")  
+    # plt.show()
 
     fig, ax = plt.subplots(1,1)
 
     # add another higher perturbation 
     maxwellboltzmann2 = {"m": 9, "n": -2, "d": 0.4, "type": "maxwell-boltzmann", "amplitude": 0.0001, "phase_poloidal": 0.1, "R":R0, "Z":Z0}
     myfield.add_perturbation(maxwellboltzmann2)
+    mymap = CylindricalBfieldSection(myfield, R0=R0, Z0=Z0, rtol=1e-8)
+    pplot = PoincarePlot.with_horizontal(mymap, 1.1, 40)
     
     print("Starting Poincare computation...")
-    pplot.compute(npts=600)
+    pplot.compute(npts=300)
     print("Poincare computation finished.")
 
     fig, ax = pplot.plot(marker=".", s=0.5, xlim=[2., 4.], ylim=[-1.2, 1.2])
-    plt.show()
+    plt.savefig("local/pyoculus_examples/island2.png", dpi=300, bbox_inches="tight")  
+    # plt.show()
 
     # If you like the configuration, you can evaluate the covariant field
     # at any point in space using the method myfield.B([R, phi, Z]). 
