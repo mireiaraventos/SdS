@@ -3,7 +3,7 @@ two_waves.py
 ==================
 Perturbed slab model described in Mireia Raventós' TPIV 2 project.
 """
-from .toroidal_bfield import ToroidalBfield
+from pyoculus.fields.toroidal_bfield import ToroidalBfield
 import numpy as np
 
 class SlabBfield(ToroidalBfield):
@@ -86,3 +86,13 @@ class SlabBfield(ToroidalBfield):
 
     def A(self, coords, *args):
         pass
+
+    def convert_coords(self, incoords):
+        return np.array(
+            [
+                incoords[0],
+                np.mod(incoords[1], 2.0 * np.pi),   # y is periodic
+                np.mod(incoords[2], 2.0 * np.pi),   # z is periodic
+            ],
+            dtype=np.float64,
+        )
