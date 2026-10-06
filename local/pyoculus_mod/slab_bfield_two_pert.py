@@ -10,23 +10,29 @@ class SlabBfieldTwoPert(ToroidalBfield):
     """Slab magnetic field with two perturbations"""
 
 
-    def __init__(self, m, n, delta, iota_prime, x0):
+    def __init__(self, m1, m2, n1, n2, delta1, delta2, iota_prime, x0):
         """
         Set up the problem
             
         Arguments:
-            m (int): Poloidal mode number.
-            n (int): Toroidal mode number.
-            delta (float): Perturbation amplitude.
+            m1 (int): First poloidal mode number.
+            m2 (int): Second poloidal mode number.
+            n1 (int): First toroidal mode number.
+            n2 (int): Second toroidal mode number.
+            delta1 (float): First perturbation amplitude.
+            delta2 (float): Second perturbation amplitude.
             iota_prime (float): Magnetic shear.
             x0 (float): Resonant surface position.
         """
 
         super().__init__() #inheritance: call ToroidalBfield.__init__()
 
-        self.m = m
-        self.n = n
-        self.delta = delta
+        self.m1 = m1
+        self.m2 = m2
+        self.n1 = n1
+        self.n2 = n2
+        self.delta1 = delta1
+        self.delta2 = delta2
         self.iota_prime = iota_prime
         self.x0 = x0
     
@@ -36,12 +42,15 @@ class SlabBfieldTwoPert(ToroidalBfield):
         y = coords[1]
         z = coords[2]
 
-        alpha = self.m*y - self.n*z
-        epsilon = self.delta*x*(1-x)
-        epsilon_prime = self.delta*(1-2*x)
+        alpha1 = self.m1*y - self.n1*z
+        alpha2 = self.m2*y - self.n2*z
+        epsilon1 = self.delta1*x*(2-x)/4
+        epsilon2 = self.delta2*x*(2-x)/4
+        epsilon_prime1 = self.delta1*(1-x)/2
+        epsilon_prime2 = self.delta2*(1-x)/2
 
-        Bx = self.m*epsilon*np.sin(alpha)
-        By = self.iota_prime*(x-self.x0) + epsilon_prime*np.cos(alpha)
+        Bx = self.m1*epsilon1*np.sin(alpha1) + self.m2*epsilon2*np.sin(alpha2)
+        By = self.iota_prime*(x-self.x0) + epsilon_prime1*np.cos(alpha1) + epsilon_prime2*np.cos(alpha2)
         Bz = 1.0
 
         return np.array([Bx, By, Bz], dtype=np.float64)
@@ -52,22 +61,26 @@ class SlabBfieldTwoPert(ToroidalBfield):
         y = coords[1]
         z = coords[2]
 
-        alpha = self.m*y - self.n*z
-        epsilon = self.delta*x*(1-x)
-        epsilon_prime = self.delta*(1-2*x)
-        epsilon_double_prime = -2*self.delta
-        
-        Bx = self.m*epsilon*np.sin(alpha)
-        By = self.iota_prime*(x-self.x0) + epsilon_prime*np.cos(alpha)
+        alpha1 = self.m1*y - self.n1*z
+        alpha2 = self.m2*y - self.n2*z
+        epsilon1 = self.delta1*x*(2-x)/4
+        epsilon2 = self.delta2*x*(2-x)/4
+        epsilon_prime1 = self.delta1*(1-x)/2
+        epsilon_prime2 = self.delta2*(1-x)/2
+        epsilon_double_prime1 = -self.delta1/2
+        epsilon_double_prime2 = -self.delta2/2
+
+        Bx = self.m1*epsilon1*np.sin(alpha1) + self.m2*epsilon2*np.sin(alpha2)
+        By = self.iota_prime*(x-self.x0) + epsilon_prime1*np.cos(alpha1) + epsilon_prime2*np.cos(alpha2)
         Bz = 1.0
 
-        dBxdx = self.m*epsilon_prime*np.sin(alpha)
-        dBxdy = self.m**2*epsilon*np.cos(alpha)
-        dBxdz = -self.m*self.n*epsilon*np.cos(alpha)
+        dBxdx = self.m1*epsilon_prime1*np.sin(alpha1) + self.m2*epsilon_prime2*np.sin(alpha2)
+        dBxdy = self.m1**2*epsilon1*np.cos(alpha1) + self.m2**2*epsilon2*np.cos(alpha2)
+        dBxdz = -self.m1*self.n1*epsilon1*np.cos(alpha1) - self.m2*self.n2*epsilon2*np.cos(alpha2)
 
-        dBydx = self.iota_prime + epsilon_double_prime*np.cos(alpha)
-        dBydy = -self.m*epsilon_prime*np.sin(alpha)
-        dBydz = self.n*epsilon_prime*np.sin(alpha)
+        dBydx = self.iota_prime + epsilon_double_prime1*np.cos(alpha1) + epsilon_double_prime2*np.cos(alpha2)
+        dBydy = -self.m1*epsilon_prime1*np.sin(alpha1) - self.m2*epsilon_prime2*np.sin(alpha2)
+        dBydz = self.n1*epsilon_prime1*np.sin(alpha1) + self.n2*epsilon_prime2*np.sin(alpha2)
 
         dBu = np.zeros([3, 3], dtype=np.float64)
 
