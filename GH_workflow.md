@@ -22,6 +22,9 @@ SdS/
 ├── literature/               ← ignored
 ├── .gitignore                ← tracked
 └── ...
+
+pyoculus/
+└── ...
 ```
 
 ### Work locally 
@@ -29,3 +32,14 @@ Should only edit `local/`. The results generated go to `local/num_results_loc`, 
 
 ### Work from the cluster
 Should only edit `cluster/`. The results generated go to `cluster/num_results`, but notice that this folder isn't loaded into GitHub. Also, the results generated in the cluster should be loaded into `local/num_results_loc`. 
+
+### Edit forked PyOculus package
+Both the local and the cluster `.venv` work with the forked `pyoculus` library. 
+
+Any modifications should be done locally, and then commited and pushed into GH in the `slab-model` branch (important to make sure any changes are made in the `slab-model`branch!!!). 
+
+Then, to use the latest version of the package in the cluster, we need to run:
+```
+cd ~/pyoculus
+git pull
+```
