@@ -110,23 +110,31 @@ INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmti12.tfm
-INPUT .\create_map.tex
-INPUT .\create_map.tex
-INPUT .\create_map.tex
-INPUT .\create_map.tex
-INPUT create_map.tex
+INPUT .\pyoculus_workflow.tex
+INPUT .\pyoculus_workflow.tex
+INPUT .\pyoculus_workflow.tex
+INPUT .\pyoculus_workflow.tex
+INPUT pyoculus_workflow.tex
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr12.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmtt10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmmi10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmsy10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmex10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx10.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx8.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx6.tfm
 OUTPUT notes_SdS.pdf
 INPUT C:\Users\mirei\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
 INPUT notes_SdS.aux
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmex10.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmex10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi8.pfb
@@ -143,3 +151,5 @@ INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy8.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy8.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmti12.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmti12.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt10.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt10.pfb

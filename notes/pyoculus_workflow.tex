@@ -1,0 +1,13 @@
+\section{PyOculus workflow}
+In \texttt{PyOculus}, we can define a magnetic configuration by specifying the components of the magnetic field $\mathbf{B}$. In our case, we want to study the following magnetic field in slab geometry, in which a perturbation creates an island structure:
+\begin{equation}\label{B_var_ampl}
+\begin{cases}
+	B_x = m\epsilon(x)\sin\alpha\\
+	B_y = \iota'(x-x_0)+\epsilon'(x)\cos\alpha\\
+	B_z = 1
+\end{cases} 
+\end{equation}
+For a system with $x\in[0,1]$ containing an island at $x_s=0.5$, as a simple model for a perturbation localized around the rational surface, we choose
+\begin{equation}\label{pert_ampl}
+\epsilon(x)=\delta\cdot x(1-x)\,.
+\end{equation}
