@@ -1,13 +1,13 @@
 """
 two_waves.py
 ==================
-Perturbed slab model generating one island described in Mireia Raventós' TPIV 2 project.
+Perturbed slab model generating two islands described in Mireia Raventós' TPIV 2 project.
 """
 from pyoculus.fields.toroidal_bfield import ToroidalBfield
 import numpy as np
 
-class SlabBfieldOnePert(ToroidalBfield):
-    """Slab magnetic field with one perturbation"""
+class SlabBfieldTwoPert(ToroidalBfield):
+    """Slab magnetic field with two perturbations"""
 
 
     def __init__(self, m, n, delta, iota_prime, x0):
