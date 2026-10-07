@@ -1,5 +1,5 @@
 # Fdb version 4
-["bibtex notes_SdS"] 0 "notes_SdS.aux" "notes_SdS.bbl" "notes_SdS" 1791105951.6563 0
+["bibtex notes_SdS"] 0 "notes_SdS.aux" "notes_SdS.bbl" "notes_SdS" 1791365291.77017 0
   "C:/Program Files/MiKTeX/bibtex/bst/bibtex/unsrt.bst" 1291864736 18030 1376b4b231b50c66211e47e42eda2875 ""
   "bib_report_TPIV2.bib" 0 -1 0 ""
   "notes_SdS.aux" 0 -1 0 "pdflatex"
@@ -7,7 +7,8 @@
   "notes_SdS.bbl"
   "notes_SdS.blg"
   (rewritten before read)
-["pdflatex"] 1791105947.2035 "c:/Users/mirei/OneDrive - epfl.ch/MA3/SdS/notes/notes_SdS.tex" "notes_SdS.pdf" "notes_SdS" 1791105951.66206 0
+["pdflatex"] 1791365289.76077 "c:/Users/mirei/OneDrive - epfl.ch/MA3/SdS/notes/notes_SdS.tex" "notes_SdS.pdf" "notes_SdS" 1791365291.77272 0
+  "C:/Program Files/MiKTeX/fonts/tfm/jknappen/ec/tcrm1095.tfm" 993062508 1460 8005ce585ff351dff78998923504da5e ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1233951848 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1233951854 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -33,6 +34,7 @@
   "C:/Program Files/MiKTeX/fonts/tfm/public/cm/cmsy8.tfm" 1136765053 1120 8b7d695260f3cff42e636090a8002094 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/cm/cmti12.tfm" 1136765053 1484 ed72f8f5cf654cda15ecc8e32bfcbee5 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/cm/cmtt10.tfm" 1136765053 768 1321e9409b4137d6fb428ac9dc956269 ""
+  "C:/Program Files/MiKTeX/fonts/tfm/public/cm/cmtt8.tfm" 1136765053 768 d7b9a2629a0c353102ad947dc9221d49 ""
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1247596666 34811 78b52f49e893bcba91bd7581cdc144c0 ""
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1247596666 32080 340ef9bf63678554ee606688e7b5339d ""
   "C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1247596667 30251 6afa5cb1d0204815a708a080681d4674 ""
@@ -82,11 +84,13 @@
   "C:/Program Files/MiKTeX/tex/latex/tools/calc.sty" 1700599895 10214 547fd4d29642cb7c80bf54b49d447f01 ""
   "C:/Program Files/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "C:/Users/mirei/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1746952566 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
+  "C:/Users/mirei/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1095.pk" 1782141261 12668 5fb7c683cef737f39c184f874ba3422b ""
   "C:/Users/mirei/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1746952941 24215231 5faf97b50206d16757f0826596cc19ae ""
-  "c:/Users/mirei/OneDrive - epfl.ch/MA3/SdS/notes/notes_SdS.tex" 1791105939 904 53ee3c805d122c2f5a6ce6d927839ac2 ""
-  "notes_SdS.aux" 1791105949 252 25a9f4f38aaa5512543a81ccbbc1b02c "pdflatex"
+  "c:/Users/mirei/OneDrive - epfl.ch/MA3/SdS/notes/notes_SdS.tex" 1791364448 926 d1f22e63dc5e8612d78e1e1c32241932 ""
+  "notes_SdS.aux" 1791365290 623 7c1e2dad54fbdea9bc4dffe21ee6addb "pdflatex"
   "notes_SdS.bbl" 0 -1 0 "bibtex notes_SdS"
-  "notes_SdS.tex" 1791105939 904 53ee3c805d122c2f5a6ce6d927839ac2 ""
+  "notes_SdS.tex" 1791364448 926 d1f22e63dc5e8612d78e1e1c32241932 ""
+  "pyoculus_mod.tex" 1791365288 1542 e718b65810b8e5ef6bf8ee3cf0e9c48b ""
   "pyoculus_workflow.tex" 1791105934 693 a47e927ee2c0e3e1e062197b75060eb2 ""
   (generated)
   "notes_SdS.aux"

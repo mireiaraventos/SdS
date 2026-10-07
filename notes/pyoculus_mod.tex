@@ -1,0 +1,16 @@
+\section{Modifications on PyOculus}
+In order to reproduce the magnetic configurations in slab geometry I worked with on TPIV2, I had to introduce some modifications on the PyOculus library.
+
+\subsection{Magnetic field in the slab model}
+I created two new classes:
+\begin{itemize}
+    \item \texttt{SlabBfieldOnePert()}: Stemming from the \texttt{ToroidalBfield()} class, this class implements a magnetic field containing one magnetic island in slab geometry.
+    \item \texttt{SlabBfieldTwoPerts()}: Stemming from the \texttt{ToroidalBfield()} class, this class implements a magnetic field containing two magnetic islands in slab geometry.
+\end{itemize}
+
+These changes haven't been merged into the package, for now they are implemented in files located in the \texttt{SdS/local/pyoculus$\_$mod} folder.
+
+\subsection{Change of the domain of the toroidal map}
+In order to generate the map corresponding to a magnetic field in slab geometry, I use the class \texttt{ToroidalBfieldSection()}. This class had the domain of the $x$ coordinate set to $[-1,1]$. Since in some cases I want to work with a different domain, I introuced a small modification in the definition of the class, so that a user can specify the domain of $x$ when creating an instance of the class, while preserving $[-1,1]$ as the default domain.
+
+This change has been made in the forked version of the library, in the file \texttt{pyoculus/pyoculus/maps/toroidal$\_$bfield$\_$section.py} lines 18-19, and committed and pushed in the branch \texttt{slab-model}.
