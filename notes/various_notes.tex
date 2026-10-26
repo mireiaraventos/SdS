@@ -1,0 +1,17 @@
+\section{Various notes}
+Use \texttt{find\_clinics\_exhaustive}() - mirar una mica més ne detall què fa exactament, però en prinicipi hauria de trobar totes les intereccions que necessitem, no només una com fa \texttt{find\_clinic\_single}().
+
+Com que estem treballant amb heteroclinics, hem de donar 2 fp. Donar un O-point ajuda al programa.
+
+Per calcular els manifolds, utilitzar \texttt{compute\_adaptive}() (pull from Ralf) - comprovar resolució.
+
+\subsection{Coses a fer}
+
+\begin{itemize}
+    \item Mirar problemes amb find\_clinic\_exhaustive().
+
+    \item Revisar jacobià de coordenades cilíndriques: buscar terme 1/r al integrator (al slab model no hauríem de tenir-ne) $\implies$ No hi ha cap terme degut a que la llibreria agafa el camp magnètic en forma contravariant: les correccions geomètriques estan integrades en el tensor mètric i els símbols de Christoffel (i.e, en els operadors geomètrics).
+    
+    \item FP en el caos: buscar $t>1$ (relació entre t i n,m?)
+
+\end{itemize}
