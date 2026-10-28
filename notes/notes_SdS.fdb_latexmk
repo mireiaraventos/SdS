@@ -1,5 +1,5 @@
 # Fdb version 4
-["bibtex notes_SdS"] 0 "notes_SdS.aux" "notes_SdS.bbl" "notes_SdS" 1793092489.88036 0
+["bibtex notes_SdS"] 0 "notes_SdS.aux" "notes_SdS.bbl" "notes_SdS" 1793209953.39745 0
   "C:/Program Files/MiKTeX/bibtex/bst/bibtex/unsrt.bst" 1291864736 18030 1376b4b231b50c66211e47e42eda2875 ""
   "bib_report_TPIV2.bib" 0 -1 0 ""
   "notes_SdS.aux" 0 -1 0 "pdflatex"
@@ -7,7 +7,7 @@
   "notes_SdS.bbl"
   "notes_SdS.blg"
   (rewritten before read)
-["pdflatex"] 1793092483.80018 "c:/Users/mirei/OneDrive - epfl.ch/MA3/SdS/notes/notes_SdS.tex" "notes_SdS.pdf" "notes_SdS" 1793092489.88667 0
+["pdflatex"] 1793209951.14543 "c:/Users/mirei/OneDrive - epfl.ch/MA3/SdS/notes/notes_SdS.tex" "notes_SdS.pdf" "notes_SdS" 1793209953.40125 0
   "C:/Program Files/MiKTeX/fonts/tfm/jknappen/ec/tcrm1095.tfm" 993062508 1460 8005ce585ff351dff78998923504da5e ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1233951848 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -90,12 +90,12 @@
   "C:/Users/mirei/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1095.pk" 1782141261 12668 5fb7c683cef737f39c184f874ba3422b ""
   "C:/Users/mirei/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1746952941 24215231 5faf97b50206d16757f0826596cc19ae ""
   "c:/Users/mirei/OneDrive - epfl.ch/MA3/SdS/notes/notes_SdS.tex" 1793001103 947 7c1681d0e5c12281ca9fc53d80e33d37 ""
-  "notes_SdS.aux" 1793092486 948 b89afe039632b5fa7f4842716139f996 "pdflatex"
+  "notes_SdS.aux" 1793209952 948 b89afe039632b5fa7f4842716139f996 "pdflatex"
   "notes_SdS.bbl" 0 -1 0 "bibtex notes_SdS"
   "notes_SdS.tex" 1793001103 947 7c1681d0e5c12281ca9fc53d80e33d37 ""
   "pyoculus_mod.tex" 1791889267 2136 381fb89628bb5415fd9ab35f4f04f115 ""
   "pyoculus_workflow.tex" 1791105934 693 a47e927ee2c0e3e1e062197b75060eb2 ""
-  "various_notes.tex" 1793092481 1290 724895dfe5a6387b5914bc0a12f7a298 ""
+  "various_notes.tex" 1793209949 1302 cacbde6064a9fbe19366477dc4985f53 ""
   (generated)
   "notes_SdS.aux"
   "notes_SdS.log"
