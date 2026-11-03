@@ -27,3 +27,34 @@ The method \texttt{ToroidalBfieldSection.df()} was returning the transposed of t
 \end{equation}
 
 This caused some problems when calculating the eigenvectors of the manifolds, so I modified the method so that it would return $J_f(x)$ instead of $J_f^T(x)$.
+
+
+\subsection{New adaptive method for computing the manifolds}
+
+Introduction of a new method, \texttt{compute\_adaptive2()}, in the \texttt{Manifold} class, defined in \texttt{manifold.py}. The new method is based on \texttt{compute\_adaptive()}, but has been modified to avoid errors arising from the evolution of spline-interpolated points.
+
+The new method uses the same curvature-based refinement criterion as the original one, using cubic spline interpolation to identify regions where additional points are needed. However, instead of interpolating new points on the evolved manifold and subsequently evolving them, it identifies the two surrounding points and uses their original $\epsilon$ parameters to generate a new initial condition, which is then evolved through the map.
+
+The initial points are computed using the linear approximation to the manifold near the hyperbolic fixed point:
+\begin{equation}
+    \mathbf{x}_i^{(0)} = \mathbf{x}^* + \epsilon_i \mathbf{v},
+\end{equation}
+where $\mathbf{x}^*$ is the fixed point and $\mathbf{v}$ is the corresponding stable or unstable eigenvector.
+
+When an interval between two points requires refinement, a new parameter is introduced using the geometric mean:
+\begin{equation}
+    \epsilon_{\mathrm{new}} = \sqrt{\epsilon_1 \epsilon_2}.
+\end{equation}
+
+The corresponding point between $F^p(\mathbf{x}_1^{(0)})$ and $F^p(\mathbf{x}_2^{(0)})$ is then computed by directly evolving the new initial condition:
+\begin{equation}
+    \boxed{
+    \mathbf{x}_{\mathrm{new}}^{(p)}
+    = F^{\pm p}\left(\mathbf{x}^* + \epsilon_{\mathrm{new}}\mathbf{v}\right).
+    }
+\end{equation}
+Here, forward iterations are used for the unstable manifold and backward iterations for the stable manifold.
+
+This procedure is possible because each evolved point retains its original $\epsilon$ parameter, allowing new initial conditions to be generated without inverting the map. After adding the new points, the curvature is recalculated and the refinement process is repeated until the tolerance criterion is satisfied or a numerical limit is reached.
+
+
