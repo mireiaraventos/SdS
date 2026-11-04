@@ -37,4 +37,4 @@ scancel -u $USER
 Move results:
 
 scp 'raventos@jed.hpc.epfl.ch:/home/raventos/SdS/cluster/num_results/*.jld2' 'C:\Users\mirei\OneDrive - epfl.ch\MA3\SdS\local\num_results_loc'
-mv num_results/*.jld2 num_results/loaded/
+mv cluster/num_results/*.jld2 cluster/num_results/loaded/
