@@ -12,8 +12,29 @@ source .venv/bin/activate
 
 Deactivate venv:
 deactivate
-------------------
 
 ------------------
 Run one simulation:
+
 julia --project=. SI_simulate_unif_grid.jl
+
+------------------
+Julia Project Environment:
+
+module load gcc/13.2.0 julia/1.10.4
+julia --project=.
+julia --project=. SI_simulate_unif_grid_cluster.jl 0.01 1e5 201
+sbatch run_sweep_SI.slurm
+sbatch run_sweep_2I.slurm
+
+------------------------------------------------------------------
+Jobs:
+
+squeue -u $USER
+scancel -u $USER
+
+------------------------------------------------------------------
+Move results:
+
+scp 'raventos@jed.hpc.epfl.ch:/home/raventos/SdS/cluster/num_results/*.jld2' 'C:\Users\mirei\OneDrive - epfl.ch\MA3\SdS\local\num_results_loc'
+mv cluster/num_results/*.jld2 cluster/num_results/loaded/

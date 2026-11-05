@@ -1,0 +1,20 @@
+┌ Warning: Attempting to store var"#1#2".
+│ JLD2 only stores functions by name.
+│  This may not be useful for anonymous functions.
+└ @ JLD2 ~/.julia/packages/JLD2/qcxKY/src/data/writing_datatypes.jl:447
+┌ Warning: Attempting to store var"#1#2".
+│ JLD2 only stores functions by name.
+│  This may not be useful for anonymous functions.
+└ @ JLD2 ~/.julia/packages/JLD2/qcxKY/src/data/writing_datatypes.jl:447
+┌ Warning: Attempting to store var"#3#4".
+│ JLD2 only stores functions by name.
+│  This may not be useful for anonymous functions.
+└ @ JLD2 ~/.julia/packages/JLD2/qcxKY/src/data/writing_datatypes.jl:447
+┌ Warning: Attempting to store var"#3#4".
+│ JLD2 only stores functions by name.
+│  This may not be useful for anonymous functions.
+└ @ JLD2 ~/.julia/packages/JLD2/qcxKY/src/data/writing_datatypes.jl:447
+┌ Warning: Attempting to store FaADE.SATs.var"#τ₀#1"{Float64, Float64}.
+│ JLD2 only stores functions by name.
+│  This may not be useful for anonymous functions.
+└ @ JLD2 ~/.julia/packages/JLD2/qcxKY/src/data/writing_datatypes.jl:447
