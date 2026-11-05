@@ -1,0 +1,15 @@
+==============================
+Task ID: 23
+delta1 = 0.5
+delta2 = 0.5
+k_exp = 8.0
+k_para = 100000000.0
+iota = 3.6
+nx = 201
+==============================
+Solving for δ1 = 0.5, δ2 = 0.5
+Constructing grid
+Bounds in x and y are being adjusted in mode: ignore period
+Grid will be remapped for chs interpolation mode
+Done
+Solving

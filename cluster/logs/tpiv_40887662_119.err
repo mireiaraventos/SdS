@@ -1,0 +1,7 @@
+ERROR: LoadError: BoundsError: attempt to access 3-element Vector{String} at index [5]
+Stacktrace:
+ [1] getindex(A::Vector{String}, i1::Int64)
+   @ Base ./essentials.jl:13
+ [2] top-level scope
+   @ ~/SdS/cluster/2I_simulate_unif_grid_cluster.jl:15
+in expression starting at /home/raventos/SdS/cluster/2I_simulate_unif_grid_cluster.jl:15
