@@ -10,4 +10,4 @@ local/.venv/
 cluster/.venv/
 
 # Slurm run logs
-cluster/logs
+cluster/logs/
