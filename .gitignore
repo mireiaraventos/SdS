@@ -11,3 +11,4 @@ cluster/.venv/
 
 # Slurm run logs
 cluster/logs/
+cluster/manifold_test_results/
