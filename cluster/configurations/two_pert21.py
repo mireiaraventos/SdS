@@ -2,6 +2,8 @@ import numpy as np
 from pyoculus.fields.slab_bfield_two_pert import SlabBfieldTwoPert
 from pyoculus.maps import ToroidalBfieldSection
 from pyoculus.solvers import PoincarePlot, FixedPoint, Manifold
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 from pathlib import Path
@@ -25,6 +27,20 @@ xs2 = field.x0 + field.n2 / (field.iota_prime * field.m2)
 
 map = ToroidalBfieldSection(field, domain=[(0, 2), (0, 2*np.pi)])
 
+pplot = PoincarePlot.with_segments(
+    map,
+    np.array([
+        [0.05, np.pi/2],
+        [1.95, np.pi/2],
+        [0.05, 3*np.pi/2],
+        [1.95, 3*np.pi/2]
+    ]),
+    neps=[50, 50],
+    connected=False,
+)
+
+# Follow each initial condition for 200 crossings
+pplot.compute(npts=150)
 
 # Fixed points:
 fp1 = FixedPoint(map)
@@ -98,33 +114,71 @@ for i, manifold in enumerate([manifold1, manifold2, manifold3, manifold4, manifo
 # Configuration number
 config_id = 21  # Change to 2, 3, etc. in the other scripts
 
+manifold1.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6, ERR=1.5e-3)
+stable1, unstable1 = manifold1.compute_adaptive2(tol=2e-3, n_u_extra=1, n_s_extra=1)
+    
+manifold2.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6, ERR=1.5e-3)
+stable2, unstable2 = manifold2.compute_adaptive2(tol=2e-3,  n_u_extra=1, n_s_extra=1)
+
+manifold3.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6)
+stable3, unstable3 = manifold3.compute_adaptive2(tol=2e-3, n_u_extra=1, n_s_extra=1)
+
+manifold4.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6)
+stable4, unstable4 = manifold4.compute_adaptive2(tol=2e-3, n_u_extra=1, n_s_extra=1)
+
+manifold5.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6)
+stable5, unstable5 = manifold5.compute_adaptive2(tol=2e-3, n_u_extra=1, n_s_extra=1)
+
+manifold6.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6)
+stable6, unstable6 = manifold6.compute_adaptive2(tol=2e-3, n_u_extra=1, n_s_extra=1)
+
 # Results directory, independent of the working directory
 cluster_dir = Path(__file__).resolve().parent.parent
-results_dir = cluster_dir / "manifold_test_results" / f"config_{config_id}"
+results_dir = cluster_dir / "manifold_results" / f"config_{config_id}"
 results_dir.mkdir(parents=True, exist_ok=True)
 
-manifolds = [manifold1, manifold2, manifold3, manifold4]
+# Save manifold arrays
+np.savez_compressed(
+    results_dir / "manifolds.npz",
+    stable1=stable1,
+    unstable1=unstable1,
+    stable2=stable2,
+    unstable2=unstable2,
+    stable3=stable3,
+    unstable3=unstable3,
+    stable4=stable4,
+    unstable4=unstable4,
+    stable5=stable5,
+    unstable5=unstable5,
+    stable6=stable6,
+    unstable6=unstable6
+)
 
-for i, manifold in enumerate(manifolds, start=1):
-    output_file = results_dir / f"manifold_{i}.txt"
+print(f"Manifold results saved to {results_dir / 'manifolds.npz'}")
 
-    with open(output_file, "w", encoding="utf-8", buffering=1) as f:
-        with redirect_stdout(f), redirect_stderr(f):
-            print(f"Configuration {config_id} - Manifold {i}", flush=True)
+fig, ax = pplot.plot(marker=".", s=0.5, xlim=[.0, 2.], plottype=None)
 
-            try:
-                test_manifold_configuration(
-                    map_obj=map,
-                    manifold=manifold,
-                    t=2,
-                    run_clinics=True,
-                    clinic_kwargs={
-                        "first_guess_eps_s": 1e-6,
-                        "first_guess_eps_u": 1e-6,
-                        "ERR": 2.2e-3
-                    }
-                )
-            except Exception:
-                traceback.print_exc()
+ax.plot(stable1[:, 0], stable1[:, 1], color="blue", label="Stable", marker=".", markersize=3, linestyle="")
+ax.plot(unstable1[:, 0], unstable1[:, 1], color="red", label="Unstable", marker=".", markersize=3, linestyle="")
 
-    print(f"Finished manifold {i}: {output_file}", flush=True)
+ax.plot(stable2[:, 0], stable2[:, 1], color="blue", label="Stable", marker=".", markersize=3, linestyle="")
+ax.plot(unstable2[:, 0], unstable2[:, 1], color="red", label="Unstable", marker=".", markersize=3, linestyle="")
+
+ax.plot(stable3[:, 0], stable3[:, 1], color="blue", label="Stable", marker=".", markersize=3, linestyle="")
+ax.plot(unstable3[:, 0], unstable3[:, 1], color="red", label="Unstable", marker=".", markersize=3, linestyle="")
+
+ax.plot(stable4[:, 0], stable4[:, 1], color="blue", label="Stable", marker=".", markersize=3, linestyle="")
+ax.plot(unstable4[:, 0], unstable4[:, 1], color="red", label="Unstable", marker=".", markersize=3, linestyle="")
+
+ax.plot(stable5[:, 0], stable5[:, 1], color="blue", label="Stable", marker=".", markersize=3, linestyle="")
+ax.plot(unstable5[:, 0], unstable5[:, 1], color="red", label="Unstable", marker=".", markersize=3, linestyle="")
+
+ax.plot(stable6[:, 0], stable6[:, 1], color="blue", label="Stable", marker=".", markersize=3, linestyle="")
+ax.plot(unstable6[:, 0], unstable6[:, 1], color="red", label="Unstable", marker=".", markersize=3, linestyle="")
+
+# Save figure
+fig.savefig(results_dir / "manifolds.png", dpi=300, bbox_inches="tight")
+
+print(f"Figure saved to {results_dir / 'manifolds.png'}")
+
+plt.close(fig)

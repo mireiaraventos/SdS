@@ -2,6 +2,8 @@ import numpy as np
 from pyoculus.fields.slab_bfield_two_pert import SlabBfieldTwoPert
 from pyoculus.maps import ToroidalBfieldSection
 from pyoculus.solvers import PoincarePlot, FixedPoint, Manifold
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 from pathlib import Path
@@ -25,6 +27,15 @@ xs2 = field.x0 + field.n2 / (field.iota_prime * field.m2)
 
 map = ToroidalBfieldSection(field, domain=[(0, 2), (0, 2*np.pi)])
 
+pplot = PoincarePlot.with_linspace(
+    map,
+    np.array([0.05, np.pi]),
+    np.array([1.95, np.pi]),
+    npts=50
+)
+
+# Follow each initial condition for 200 crossings
+pplot.compute(npts=150)
 
 # Fixed points:
 # X-points island 1:
@@ -111,33 +122,16 @@ for i, manifold in enumerate([manifold1, manifold2, manifold3, manifold4, manifo
 # Configuration number
 config_id = 23  # Change to 2, 3, etc. in the other scripts
 
-# Results directory, independent of the working directory
-cluster_dir = Path(__file__).resolve().parent.parent
-results_dir = cluster_dir / "manifold_test_results" / f"config_{config_id}"
-results_dir.mkdir(parents=True, exist_ok=True)
+manifold1.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6, ERR=4e-3)
+stable1_2, unstable1_2 = manifold1.compute_adaptive2(tol=3e-3, n_u_extra=0, n_s_extra=0)
 
-manifolds = [manifold1, manifold2, manifold3, manifold4]
+manifold2.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6, ERR=2.2e-3)
+stable2_2, unstable2_2 = manifold2.compute_adaptive2(tol=3e-3, n_u_extra=0, n_s_extra=0)
 
-for i, manifold in enumerate(manifolds, start=1):
-    output_file = results_dir / f"manifold_{i}.txt"
+manifold3.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6, ERR=2.2e-3)
+stable3_2, unstable3_2 = manifold3.compute_adaptive2(tol=3e-3, n_u_extra=0, n_s_extra=0)
 
-    with open(output_file, "w", encoding="utf-8", buffering=1) as f:
-        with redirect_stdout(f), redirect_stderr(f):
-            print(f"Configuration {config_id} - Manifold {i}", flush=True)
+manifold4.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6, ERR=2.2e-3)
+stable4_2, unstable4_2 = manifold4.compute_adaptive2(tol=3e-3, n_u_extra=0, n_s_extra=0)
 
-            try:
-                test_manifold_configuration(
-                    map_obj=map,
-                    manifold=manifold,
-                    t=2,
-                    run_clinics=True,
-                    clinic_kwargs={
-                        "first_guess_eps_s": 1e-6,
-                        "first_guess_eps_u": 1e-6,
-                        "ERR": 2.2e-3
-                    }
-                )
-            except Exception:
-                traceback.print_exc()
-
-    print(f"Finished manifold {i}: {output_file}", flush=True)
+#...
