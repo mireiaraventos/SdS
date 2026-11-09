@@ -88,7 +88,7 @@ for i, manifold in enumerate([manifold1, manifold2, manifold3, manifold4], start
 # Test manifold configurations:# Directory for this configuration's results
 
 # Configuration number
-config_id = 13  # Change to 2, 3, etc. in the other scripts
+config_id = 14  # Change to 2, 3, etc. in the other scripts
 
 manifold1.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6, ERR=1.3e-3)
 stable1, unstable1 = manifold1.compute_adaptive2(tol=3e-3, n_u_extra=0, n_s_extra=0)
