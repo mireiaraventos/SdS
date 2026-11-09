@@ -4,6 +4,7 @@ literature/
 # Numerical simulation results
 local/num_results_loc/
 cluster/num_results/
+cluster/manifold_results/
 
 # Python virtual environment
 local/.venv/
