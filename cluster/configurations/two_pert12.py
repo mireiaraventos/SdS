@@ -6,21 +6,34 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
+import json
 from pathlib import Path
-from contextlib import redirect_stdout, redirect_stderr
-import traceback
-from test_manifold_config import test_manifold_configuration
 
-field = SlabBfieldTwoPert(
-    m1=1,
-    n1=1,
-    delta1=0.5,
-    m2=1,
-    n2=-1,
-    delta2=0.5,
-    iota_prime=2.0,
-    x0=1.0,
-)
+# Configuration number
+config_id = 12
+
+# Results directory, independent of the working directory
+cluster_dir = Path(__file__).resolve().parent.parent
+results_dir = cluster_dir / "manifold_results" / f"config_{config_id}"
+results_dir.mkdir(parents=True, exist_ok=True)
+
+field_params = {
+    "m1": 1,
+    "n1": 1,
+    "delta1": 0.5,
+    "m2": 1,
+    "n2": -1,
+    "delta2": 0.5,
+    "iota_prime": 2.0,
+    "x0": 1.0
+}
+
+with open(results_dir / "parameters.json", "w") as f:
+    json.dump(field_params, f, indent=4)
+
+print(f"Parameters saved to {results_dir / 'parameters.json'}")
+
+field = SlabBfieldTwoPert(**field_params)
 
 xs1 = field.x0 + field.n1 / (field.iota_prime * field.m1)
 xs2 = field.x0 + field.n2 / (field.iota_prime * field.m2)
@@ -89,9 +102,6 @@ for i, manifold in enumerate([manifold1, manifold2, manifold3, manifold4], start
 
 # Test manifold configurations:# Directory for this configuration's results
 
-# Configuration number
-config_id = 12  # Change to 2, 3, etc. in the other scripts
-
 manifold1.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6, ERR=1.5e-3)
 stable1_2, unstable1_2 = manifold1.compute_adaptive2(tol=3e-3, n_u_extra=1, n_s_extra=1)
 
@@ -116,11 +126,6 @@ unstable_unwrapped4_2 = unstable4_2.copy()
 stable_unwrapped4_2[:, 1] = np.unwrap(stable4_2[:, 1], period=2*np.pi)
 unstable_unwrapped4_2[:, 1] = np.unwrap(unstable4_2[:, 1], period=2*np.pi)
 
-
-# Results directory, independent of the working directory
-cluster_dir = Path(__file__).resolve().parent.parent
-results_dir = cluster_dir / "manifold_results" / f"config_{config_id}"
-results_dir.mkdir(parents=True, exist_ok=True)
 
 # Save manifold arrays
 np.savez_compressed(

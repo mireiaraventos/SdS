@@ -5,20 +5,37 @@ from pyoculus.solvers import PoincarePlot, FixedPoint, Manifold
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from pathlib import Path
+
 from time import perf_counter
 
+import json
+from pathlib import Path
 
-field = SlabBfieldTwoPert(
-    m1=2,
-    n1=1,
-    delta1=0.5,
-    m2=1,
-    n2=-1,
-    delta2=0.5,
-    iota_prime=4.0,
-    x0=1.0,
-)
+# Configuration number
+config_id = 23
+
+# Results directory, independent of the working directory
+cluster_dir = Path(__file__).resolve().parent.parent
+results_dir = cluster_dir / "manifold_results" / f"config_{config_id}"
+results_dir.mkdir(parents=True, exist_ok=True)
+
+field_params = {
+    "m1": 2,
+    "n1": 1,
+    "delta1": 0.5,
+    "m2": 1,
+    "n2": -1,
+    "delta2": 0.5,
+    "iota_prime": 4.0,
+    "x0": 1.0
+}
+
+with open(results_dir / "parameters.json", "w") as f:
+    json.dump(field_params, f, indent=4)
+
+print(f"Parameters saved to {results_dir / 'parameters.json'}")
+
+field = SlabBfieldTwoPert(**field_params)
 
 xs1 = field.x0 + field.n1 / (field.iota_prime * field.m1)
 xs2 = field.x0 + field.n2 / (field.iota_prime * field.m2)
@@ -115,13 +132,6 @@ for i, manifold in enumerate([manifold1, manifold2, manifold3, manifold4, manifo
 
 
 # Test manifold configurations:# Directory for this configuration's results
-
-# Configuration number
-config_id = 23
-
-cluster_dir = Path(__file__).resolve().parent.parent
-results_dir = cluster_dir / "manifold_results" / f"config_{config_id}"
-results_dir.mkdir(parents=True, exist_ok=True)
 
 manifolds = [
     manifold1, manifold2, manifold3,
