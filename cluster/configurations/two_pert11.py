@@ -109,7 +109,7 @@ results_dir.mkdir(parents=True, exist_ok=True)
 # Save manifold results
 # Save manifold arrays
 np.savez_compressed(
-    results_dir / "manifolds_opt.npz",
+    results_dir / "manifolds.npz",
     stable1=stable1,
     unstable1=unstable1,
     stable2=stable2,
