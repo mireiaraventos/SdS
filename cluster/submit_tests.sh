@@ -2,7 +2,7 @@
 #SBATCH --job-name=manifold_tests
 #SBATCH --partition=academic
 #SBATCH --qos=academic
-#SBATCH --array=11-13,21-23
+#SBATCH --array=11-13,21-23%6
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=4G
 #SBATCH --time=08:00:00
@@ -18,6 +18,6 @@ export PYTHONPATH="$PWD:$PYTHONPATH"
 
 echo "Starting configuration ${SLURM_ARRAY_TASK_ID}"
 
-python -u "configurations/two_pert${SLURM_ARRAY_TASK_ID}.py"
+python -u "configurations_test/two_pert${SLURM_ARRAY_TASK_ID}_test.py"
 
 echo "Finished configuration ${SLURM_ARRAY_TASK_ID}"
