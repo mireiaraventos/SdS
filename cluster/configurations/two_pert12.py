@@ -124,7 +124,7 @@ results_dir.mkdir(parents=True, exist_ok=True)
 
 # Save manifold arrays
 np.savez_compressed(
-    results_dir / "manifolds_opt.npz",
+    results_dir / "manifolds.npz",
     stable1=stable1_2,
     unstable1=unstable1_2,
     stable2=stable2_2,
@@ -139,7 +139,7 @@ np.savez_compressed(
     unstable_unwrapped4=unstable_unwrapped4_2
 )
 
-print(f"Manifold results saved to {results_dir / 'manifolds_opt.npz'}")
+print(f"Manifold results saved to {results_dir / 'manifolds.npz'}")
 
 fig, ax = pplot.plot(marker=".", s=0.5, xlim=[.0, 2.], plottype=None)
 
@@ -156,8 +156,8 @@ ax.plot(stable3_2[:, 0], stable3_2[:, 1], color="blue", label="Stable", marker="
 ax.plot(unstable3_2[:, 0], unstable3_2[:, 1], color="red", label="Unstable", marker=".", markersize=3, linestyle="")
 
 # Save figure
-fig.savefig(results_dir / "manifolds_opt.png", dpi=300, bbox_inches="tight")
+fig.savefig(results_dir / "manifolds.png", dpi=300, bbox_inches="tight")
 
-print(f"Figure saved to {results_dir / 'manifolds_opt.png'}")
+print(f"Figure saved to {results_dir / 'manifolds.png'}")
 
 plt.close(fig)

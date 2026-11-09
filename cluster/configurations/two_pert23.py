@@ -168,7 +168,7 @@ for i, (manifold, err) in enumerate(zip(manifolds, errors), start=1):
 
     # Save after every completed manifold
     np.savez_compressed(
-        results_dir / "manifolds_opt.npz",
+        results_dir / "manifolds.npz",
         **save_data
     )
 
@@ -205,6 +205,6 @@ for i, (stable, unstable) in enumerate(unwrapped_arrays, start=1):
 
 ax.legend()
 
-fig.savefig(results_dir / "manifolds_opt.png", dpi=300, bbox_inches="tight")
+fig.savefig(results_dir / "manifolds.png", dpi=300, bbox_inches="tight")
 
 plt.close(fig)
