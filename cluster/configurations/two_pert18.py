@@ -47,7 +47,7 @@ fp3 = FixedPoint(map)
 fp3.find_with_iota(n = field.n2, m = field.m2, guess = np.array([xs2, 0.1]), method="scipy.root")  
 
 fp4 = FixedPoint(map)
-fp4.find(t=1, guess = np.array([0.70933, 6.15]), method="scipy.root") 
+fp4.find(t=1, guess = np.array([0.684, 6.15]), method="scipy.root")   
 
 ofp1 = FixedPoint(map)
 ofp1.find_with_iota(n = field.n1, m = field.m1, guess = np.array([xs1, 3]), method="scipy.root")
