@@ -107,15 +107,18 @@ results_dir = cluster_dir / "manifold_results" / f"config_{config_id}"
 results_dir.mkdir(parents=True, exist_ok=True)
 
 # Save manifold results
-for i, (stable, unstable) in enumerate([
-    (stable1, unstable1),
-    (stable2, unstable2),
-    (stable3, unstable3),
-    (stable4, unstable4)
-], start=1):
-    np.save(results_dir / f"stable{i}.npy", stable)
-    np.save(results_dir / f"unstable{i}.npy", unstable)
-
+# Save manifold arrays
+np.savez_compressed(
+    results_dir / "manifolds_opt.npz",
+    stable1=stable1,
+    unstable1=unstable1,
+    stable2=stable2,
+    unstable2=unstable2,
+    stable3=stable3,
+    unstable3=unstable3,
+    stable4=stable4,
+    unstable4=unstable4
+)
 print(f"Manifold results saved to {results_dir}")
 
 fig, ax = pplot.plot(marker=".", s=0.5, xlim=[.0, 2.], plottype=None)
