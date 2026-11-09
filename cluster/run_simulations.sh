@@ -2,10 +2,10 @@
 #SBATCH --job-name=manifold
 #SBATCH --partition=academic
 #SBATCH --qos=academic
-#SBATCH --array=22
+#SBATCH --array=12,22,23
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=4G
-#SBATCH --time=08:00:00
+#SBATCH --time=24:00:00
 #SBATCH --output=logs/manifold_%A_%a.out
 #SBATCH --error=logs/manifold_%A_%a.err
 

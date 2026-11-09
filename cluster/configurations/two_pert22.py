@@ -123,16 +123,16 @@ for i, manifold in enumerate([manifold1, manifold2, manifold3, manifold4, manifo
 config_id = 22  # Change to 2, 3, etc. in the other scripts
 
 manifold1.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6, ERR=2.2e-3)
-stable1_2, unstable1_2 = manifold1.compute_adaptive2(tol=3e-3, n_u_extra=0, n_s_extra=0)
+stable1_2, unstable1_2 = manifold1.compute_adaptive2(tol=3e-3, n_u_extra=1, n_s_extra=1)
 
 manifold2.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6, ERR=2.2e-3)
-stable2_2, unstable2_2 = manifold2.compute_adaptive2(tol=3e-3, n_u_extra=0, n_s_extra=0)
+stable2_2, unstable2_2 = manifold2.compute_adaptive2(tol=3e-3, n_u_extra=1, n_s_extra=1)
 
 manifold3.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6, ERR=2.2e-3)
-stable3_2, unstable3_2 = manifold3.compute_adaptive2(tol=3e-3, n_u_extra=0, n_s_extra=0)
+stable3_2, unstable3_2 = manifold3.compute_adaptive2(tol=3e-3, n_u_extra=1, n_s_extra=1)
 
 manifold4.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6, ERR=2.2e-3)
-stable4_2, unstable4_2 = manifold4.compute_adaptive2(tol=3e-3, n_u_extra=0, n_s_extra=0)
+stable4_2, unstable4_2 = manifold4.compute_adaptive2(tol=3e-3, n_u_extra=1, n_s_extra=1)
 
 manifold5.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6, ERR=2.2e-3)
 stable5_2, unstable5_2 = manifold5.compute_adaptive2(tol=3e-3, n_u_extra=0, n_s_extra=0)
@@ -167,7 +167,7 @@ results_dir.mkdir(parents=True, exist_ok=True)
 
 # Save manifold arrays
 np.savez_compressed(
-    results_dir / "manifolds.npz",
+    results_dir / "manifolds_opt.npz",
     stable1=stable1_2,
     unstable1=unstable1_2,
     stable2=stable2_2,
@@ -190,7 +190,7 @@ np.savez_compressed(
     unstable_unwrapped4=unstable_unwrapped4_2
 )
 
-print(f"Manifold results saved to {results_dir / 'manifolds.npz'}")
+print(f"Manifold results saved to {results_dir / 'manifolds_opt.npz'}")
 
 fig, ax = pplot.plot(marker=".", s=0.5, xlim=[.0, 2.], plottype=None)
 
@@ -213,8 +213,8 @@ ax.plot(stable6_2[:, 0], stable6_2[:, 1], color="blue", label="Stable", marker="
 ax.plot(unstable6_2[:, 0], unstable6_2[:, 1], color="red", label="Unstable", marker=".", markersize=3, linestyle="")
 
 # Save figure
-fig.savefig(results_dir / "manifolds.png", dpi=300, bbox_inches="tight")
+fig.savefig(results_dir / "manifolds_opt.png", dpi=300, bbox_inches="tight")
 
-print(f"Figure saved to {results_dir / 'manifolds.png'}")
+print(f"Figure saved to {results_dir / 'manifolds_opt.png'}")
 
 plt.close(fig)
