@@ -33,6 +33,13 @@ Jobs:
 squeue -u $USER
 scancel -u $USER
 
+Check last logs (for config 14):
+ls -lt logs/*_14.*
+
+Check the most recent error and output log (for config 14):
+cat "$(ls -t logs/*_14.err | head -n 1)"
+tail -n 50 "$(ls -t logs/*_14.out | head -n 1)"
+
 ------------------------------------------------------------------
 Move results:
 
