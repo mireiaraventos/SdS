@@ -143,7 +143,15 @@ np.savez_compressed(
     stable3=stable3,
     unstable3=unstable3,
     stable4=stable4,
-    unstable4=unstable4
+    unstable4=unstable4,
+    stable_unwrapped1=stable_unwrapped1,
+    unstable_unwrapped1=unstable_unwrapped1,
+    stable_unwrapped2=stable_unwrapped2,
+    unstable_unwrapped2=unstable_unwrapped2,
+    stable_unwrapped3=stable_unwrapped3,
+    unstable_unwrapped3=unstable_unwrapped3,
+    stable_unwrapped4=stable_unwrapped4,
+    unstable_unwrapped4=unstable_unwrapped4
 )
 
 print(f"Manifold results saved to {results_dir / 'manifolds.npz'}")
