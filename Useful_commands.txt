@@ -75,7 +75,7 @@ $destination = "C:\Users\mirei\OneDrive - epfl.ch\MA3\SdS\local\num_results_loc\
 New-Item -ItemType Directory -Force -Path $destination | Out-Null
 
 # Configuration IDs
-$configs = @(13, 15, 16, 18)
+$configs = @(23)
 
 # Copy and rename each JSON file
 foreach ($id in $configs) {
