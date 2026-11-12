@@ -49,7 +49,11 @@ cat "$(ls -t logs/*.out | head -1)"
 ------------------------------------------------------------------
 Move results:
 
-scp 'raventos@jed.hpc.epfl.ch:/home/raventos/SdS/cluster/num_results/*.jld2' 'C:\Users\mirei\OneDrive - epfl.ch\MA3\SdS\local\num_results_loc'
+scp 'raventos@jed.hpc.epfl.ch:/home/raventos/SdS/cluster/poincare_plots/*.npz' 'C:\Users\mirei\OneDrive - epfl.ch\MA3\SdS\local\num_results_loc\poincare_plots'
+mv cluster/num_results/*.jld2 cluster/poincare_plots/loaded/
+
+
+scp 'raventos@jed.hpc.epfl.ch:/home/raventos/SdS/cluster/num_results/*.jld2' 'C:\Users\mirei\OneDrive - epfl.ch\MA3\SdS\local\num_results_loc\FaADE'
 mv cluster/num_results/*.jld2 cluster/num_results/loaded/
 
 ------------------------------------------------------------------
