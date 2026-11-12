@@ -10,7 +10,8 @@ iota = 4
 # deltas = [0.005, 0.01, 0.05, 0.1, 0.2, 0.3, 0.5]
 # deltas = [0.5]
 delta = 0.5
-iotas = [2.2, 2.4, 2.8, 3.0, 3.2, 3.4, 3.6, 3.8]
+# iotas = [2.2, 2.4, 2.8, 3.0, 3.2, 3.4, 3.6, 3.8]
+iotas = [2.6]
 
 for iota in iotas
     δ1 = delta
@@ -106,7 +107,7 @@ for iota in iotas
 
     for (i, exp_k) in enumerate(k_values)
 
-        infile = "C:/Users/mirei/OneDrive - epfl.ch/MA3/SdS/local/num_results_loc/2I_k$(exp_k)_tf$(t_f)_d$(δ1)_$(δ2)_res201_m1_dT_iota$(iota).jld2"
+        infile = "C:/Users/mirei/OneDrive - epfl.ch/MA3/SdS/local/num_results_loc/FaADE/2I_k$(exp_k)_tf$(t_f)_d$(δ1)_$(δ2)_res201_m1_dT_iota$(iota).jld2"
 
         x_mid = JLD2.load(infile, "x_mid")
         u_mid = JLD2.load(infile, "u_mid")
