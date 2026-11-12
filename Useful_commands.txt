@@ -49,10 +49,19 @@ cat "$(ls -t logs/*.out | head -1)"
 ------------------------------------------------------------------
 Move results:
 
+POINCARE PLOTS:
 scp 'raventos@jed.hpc.epfl.ch:/home/raventos/SdS/cluster/poincare_plots/*.npz' 'C:\Users\mirei\OneDrive - epfl.ch\MA3\SdS\local\num_results_loc\poincare_plots'
 mv poincare_plots/*.npz poincare_plots/loaded/
 
+COMPUTED MANIFOLDS:
+scp 'raventos@jed.hpc.epfl.ch:/home/raventos/SdS/cluster/manifold_results/*.npz' 'C:\Users\mirei\OneDrive - epfl.ch\MA3\SdS\local\num_results_loc\computed_manifolds'
+mv manifold_results/*.npz manifold_results/loaded/
 
+COMPUTED PARAMETERS:
+scp 'raventos@jed.hpc.epfl.ch:/home/raventos/SdS/cluster/manifold_results/*.json' 'C:\Users\mirei\OneDrive - epfl.ch\MA3\SdS\local\num_results_loc\computed_manifolds'
+mv manifold_results/*.json manifold_results/loaded/
+
+FAADE SIMULATIONS:
 scp 'raventos@jed.hpc.epfl.ch:/home/raventos/SdS/cluster/num_results/*.jld2' 'C:\Users\mirei\OneDrive - epfl.ch\MA3\SdS\local\num_results_loc\FaADE'
 mv cluster/num_results/*.jld2 cluster/num_results/loaded/
 

@@ -41,17 +41,16 @@ fp1 = FixedPoint(map)
 fp1.find_with_iota(n = field.n1, m = field.m1, guess = np.array(fp2.coords[1]), method="scipy.root")  
 
 fp3 = FixedPoint(map)
-fp3.find_with_iota(n = field.n2, m = field.m2, guess = np.array([xs2, 0.1]), method="scipy.root")  
+fp3.find(t=1, guess = np.array([0.628, 6.15]), method="scipy.root")     
 
 fp4 = FixedPoint(map)
-fp4.find(t=1, guess = np.array([0.628, 6.15]), method="scipy.root")   
+fp4.find(t=1, guess = np.array(fp3.coords[1]), method="scipy.root")   
 
 ofp1 = FixedPoint(map)
 ofp1.find_with_iota(n = field.n1, m = field.m1, guess = np.array([xs1, 3]), method="scipy.root")
 
 ofp2 = FixedPoint(map)
 ofp2.find_with_iota(n = field.n2, m = field.m2, guess = np.array([xs2, 3]), method="scipy.root")
-
 # Manifolds:
 
 manifold1 = Manifold(
@@ -88,10 +87,10 @@ manifold1.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6
 stable1, unstable1 = manifold1.compute_adaptive2(tol=3e-3, n_u_extra=0, n_s_extra=0)
     
 manifold2.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6, ERR=1.3e-3)
-stable2, unstable2 = manifold2.compute_adaptive2(tol=3e-3, n_u_extra=1, n_s_extra=0)
+stable2, unstable2 = manifold2.compute_adaptive2(tol=3e-3, n_u_extra=0, n_s_extra=0)
 
 manifold3.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6, ERR=1.3e-3)
-stable3, unstable3 = manifold3.compute_adaptive2(tol=3e-3, n_u_extra=1, n_s_extra=0)
+stable3, unstable3 = manifold3.compute_adaptive2(tol=3e-3, n_u_extra=0, n_s_extra=0)
 
 manifold4.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6, ERR=1.3e-3)
 stable4, unstable4 = manifold4.compute_adaptive2(tol=3e-3, n_u_extra=0, n_s_extra=0)

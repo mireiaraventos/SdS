@@ -88,10 +88,10 @@ manifold1.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6
 stable1, unstable1 = manifold1.compute_adaptive2(tol=3e-3, n_u_extra=0, n_s_extra=0)
     
 manifold2.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6, ERR=1.3e-3)
-stable2, unstable2 = manifold2.compute_adaptive2(tol=3e-3, n_u_extra=1, n_s_extra=0)
+stable2, unstable2 = manifold2.compute_adaptive2(tol=3e-3, n_u_extra=0, n_s_extra=0)
 
 manifold3.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6, ERR=1.3e-3)
-stable3, unstable3 = manifold3.compute_adaptive2(tol=3e-3, n_u_extra=1, n_s_extra=0)
+stable3, unstable3 = manifold3.compute_adaptive2(tol=3e-3, n_u_extra=0, n_s_extra=0)
 
 manifold4.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6, ERR=1.3e-3)
 stable4, unstable4 = manifold4.compute_adaptive2(tol=3e-3, n_u_extra=0, n_s_extra=0)
