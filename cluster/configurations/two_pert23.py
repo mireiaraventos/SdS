@@ -158,7 +158,7 @@ for i, (manifold, err) in enumerate(zip(manifolds, errors), start=1):
     print(f"Clinic search: {(perf_counter() - t0) / 60:.1f} min", flush=True)
     t1 = perf_counter()
 
-    stable, unstable = manifold.compute_adaptive2(tol=5e-3, max_periods=20, max_points=1000, n_u_extra=1, n_s_extra=1)
+    stable, unstable = manifold.compute_adaptive2(tol=4e-3, max_periods=20, max_points=1000, n_u_extra=2, n_s_extra=2)
 
     print(f"Adaptive computation: {(perf_counter() - t1) / 60:.1f} min", flush=True)
 
