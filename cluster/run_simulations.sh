@@ -2,7 +2,7 @@
 #SBATCH --job-name=manifold
 #SBATCH --partition=academic
 #SBATCH --qos=academic
-#SBATCH --array=11,12,13,14,15,16,17,18,19,110,21,22,23
+#SBATCH --array=111,112
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=4G
 #SBATCH --time=24:00:00
