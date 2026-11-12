@@ -14,7 +14,7 @@ config_id = 13
 
 # Results directory, independent of the working directory
 cluster_dir = Path(__file__).resolve().parent.parent
-results_dir = cluster_dir / "manifold_results" / f"config_{config_id}"
+results_dir = cluster_dir / "manifold_results"
 results_dir.mkdir(parents=True, exist_ok=True)
 
 field_params = {
@@ -28,10 +28,10 @@ field_params = {
     "x0": 1.0
 }
 
-with open(results_dir / "parameters.json", "w") as f:
+with open(results_dir / f"parameters_{config_id}.json", "w") as f:
     json.dump(field_params, f, indent=4)
 
-print(f"Parameters saved to {results_dir / 'parameters.json'}")
+print(f"Parameters saved to {results_dir}")
 
 field = SlabBfieldTwoPert(**field_params)
 
@@ -39,16 +39,6 @@ xs1 = field.x0 + field.n1 / (field.iota_prime * field.m1)
 xs2 = field.x0 + field.n2 / (field.iota_prime * field.m2)
 
 map = ToroidalBfieldSection(field, domain=[(0, 2), (0, 2*np.pi)])
-
-pplot = PoincarePlot.with_linspace(
-    map,
-    np.array([0.05, np.pi]),
-    np.array([1.95, np.pi]),
-    npts=50
-)
-
-# Follow each initial condition for 200 crossings
-pplot.compute(npts=150)
 
 # Fixed points:
 fp1 = FixedPoint(map)
@@ -103,7 +93,7 @@ for i, manifold in enumerate([manifold1, manifold2, manifold3, manifold4], start
 # Test manifold configurations:# Directory for this configuration's results
 
 manifold1.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6, ERR=1.3e-3)
-stable1, unstable1 = manifold1.compute_adaptive2(tol=3e-3, n_u_extra=1, n_s_extra=1)
+stable1, unstable1 = manifold1.compute_adaptive2(tol=3e-3, n_u_extra=1, n_s_extra=2)
     
 manifold2.find_clinics_exhaustive(first_guess_eps_s=1e-6, first_guess_eps_u=1e-6, ERR=1.3e-3)
 stable2, unstable2 = manifold2.compute_adaptive2(tol=3e-3, n_u_extra=1, n_s_extra=1)
@@ -137,7 +127,7 @@ unstable_unwrapped4[:, 1] = np.unwrap(unstable4[:, 1], period=2*np.pi)
 
 # Save manifold arrays
 np.savez_compressed(
-    results_dir / "manifolds.npz",
+    results_dir / f"manifolds_{config_id}.npz",
     stable1=stable1,
     unstable1=unstable1,
     stable2=stable2,
@@ -156,29 +146,4 @@ np.savez_compressed(
     unstable_unwrapped4=unstable_unwrapped4
 )
 
-print(f"Manifold results saved to {results_dir / 'manifolds.npz'}")
-
-
-fig, ax = pplot.plot(marker=".", s=0.5, xlim=[.0, 2.], plottype=None)
-
-
-ax.plot(stable_unwrapped1[:, 0], stable_unwrapped1[:, 1], color="blue", label="Stable", marker=".", markersize=3, linestyle="")
-ax.plot(unstable_unwrapped1[:, 0], unstable_unwrapped1[:, 1], color="red", label="Unstable", marker=".", markersize=3, linestyle="")
-
-ax.plot(stable_unwrapped2[:, 0], stable_unwrapped2[:, 1], color="blue", label="Stable", marker=".", markersize=3, linestyle="")
-ax.plot(unstable_unwrapped2[:, 0], unstable_unwrapped2[:, 1], color="red", label="Unstable", marker=".", markersize=3, linestyle="")
-
-ax.plot(stable_unwrapped4[:, 0], stable_unwrapped4[:, 1], color="blue", label="Stable", marker=".", markersize=3, linestyle="")
-ax.plot(unstable_unwrapped4[:, 0], unstable_unwrapped4[:, 1], color="red", label="Unstable", marker=".", markersize=3, linestyle="")
-
-ax.plot(stable_unwrapped3[:, 0], stable_unwrapped3[:, 1], color="blue", label="Stable", marker=".", markersize=3, linestyle="")
-ax.plot(unstable_unwrapped3[:, 0], unstable_unwrapped3[:, 1], color="red", label="Unstable", marker=".", markersize=3, linestyle="")
-
-ax.legend()
-
-# Save figure
-fig.savefig(results_dir / "manifolds.png", dpi=300, bbox_inches="tight")
-
-print(f"Figure saved to {results_dir / 'manifolds.png'}")
-
-plt.close(fig)
+print(f"Manifold results saved to {results_dir}")

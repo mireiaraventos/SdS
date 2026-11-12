@@ -16,7 +16,7 @@ config_id = 23
 
 # Results directory, independent of the working directory
 cluster_dir = Path(__file__).resolve().parent.parent
-results_dir = cluster_dir / "manifold_results" / f"config_{config_id}"
+results_dir = cluster_dir / "manifold_results"
 results_dir.mkdir(parents=True, exist_ok=True)
 
 field_params = {
@@ -30,10 +30,10 @@ field_params = {
     "x0": 1.0
 }
 
-with open(results_dir / "parameters.json", "w") as f:
+with open(results_dir / f"parameters_{config_id}.json", "w") as f:
     json.dump(field_params, f, indent=4)
 
-print(f"Parameters saved to {results_dir / 'parameters.json'}")
+print(f"Parameters saved to {results_dir}")
 
 field = SlabBfieldTwoPert(**field_params)
 
@@ -41,15 +41,6 @@ xs1 = field.x0 + field.n1 / (field.iota_prime * field.m1)
 xs2 = field.x0 + field.n2 / (field.iota_prime * field.m2)
 
 map = ToroidalBfieldSection(field, domain=[(0,2), (0, 2*np.pi)], type="dopri5", rtol=1e-10, nsteps=100000)
-pplot = PoincarePlot.with_linspace(
-    map,
-    np.array([0.05, np.pi]),
-    np.array([1.95, np.pi]),
-    npts=50
-)
-
-# Follow each initial condition for 200 crossings
-pplot.compute(npts=150)
 
 # Fixed points:
 # X-points island 1:
@@ -85,29 +76,29 @@ ofp3.find_with_iota(n = field.n2, m = field.m2, guess = np.array([xs2, 3]), meth
 # Manifolds:
 # Island 1 bottom:
 manifold1 = Manifold(
-    map, fp2, fp1,
-    dir1=ofp1.coords[0] - fp2.coords[0],
-    dir2=ofp1.coords[0] - fp1.coords[0]
+    map, fp2, fp1
+    # dir1=ofp1.coords[0] - fp2.coords[0],
+    # dir2=ofp1.coords[0] - fp1.coords[0]
 )
 
 manifold2 = Manifold(
     map, fp2, fp1,
-    dir1=ofp1.coords[0] - fp2.coords[0],
-    dir2=ofp1.coords[0] - fp1.coords[0],
+    # dir1=ofp1.coords[0] - fp2.coords[0],
+    # dir2=ofp1.coords[0] - fp1.coords[0],
     first_stable=False
 )
 
 # Island 1 top:
 manifold3 = Manifold(
-    map, fp2, fp3,
-    dir1=ofp2.coords[0] - fp2.coords[0],
-    dir2=ofp2.coords[0] - fp3.coords[0]
+    map, fp2, fp3
+    # dir1=ofp2.coords[0] - fp2.coords[0],
+    # dir2=ofp2.coords[0] - fp3.coords[0]
 )
 
 manifold4 = Manifold(
     map, fp2, fp3,
-    dir1=ofp2.coords[0] - fp2.coords[0],
-    dir2=ofp2.coords[0] - fp3.coords[0],
+    # dir1=ofp2.coords[0] - fp2.coords[0],
+    # dir2=ofp2.coords[0] - fp3.coords[0],
     first_stable=False
 )
 
@@ -178,43 +169,8 @@ for i, (manifold, err) in enumerate(zip(manifolds, errors), start=1):
 
     # Save after every completed manifold
     np.savez_compressed(
-        results_dir / "manifolds.npz",
+        results_dir / f"manifolds_{config_id}.npz",
         **save_data
     )
 
     print(f"Manifold {i} completed and saved", flush=True)
-
-
-# Plot Poincare section and manifolds
-fig, ax = pplot.plot(
-    marker=".",
-    s=0.5,
-    xlim=[0.0, 2.0],
-    plottype=None
-)
-  
-for i, (stable, unstable) in enumerate(unwrapped_arrays, start=1):
-
-    ax.plot(
-        stable[:, 0], stable[:, 1],
-        color="blue",
-        label="Stable" if i == 1 else None,
-        marker=".",
-        markersize=3,
-        linestyle=""
-    )
-
-    ax.plot(
-        unstable[:, 0], unstable[:, 1],
-        color="red",
-        label="Unstable" if i == 1 else None,
-        marker=".",
-        markersize=3,
-        linestyle=""
-    )
-
-ax.legend()
-
-fig.savefig(results_dir / "manifolds.png", dpi=300, bbox_inches="tight")
-
-plt.close(fig)

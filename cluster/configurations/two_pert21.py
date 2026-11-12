@@ -14,7 +14,7 @@ config_id = 21
 
 # Results directory, independent of the working directory
 cluster_dir = Path(__file__).resolve().parent.parent
-results_dir = cluster_dir / "manifold_results" / f"config_{config_id}"
+results_dir = cluster_dir / "manifold_results"
 results_dir.mkdir(parents=True, exist_ok=True)
 
 field_params = {
@@ -28,10 +28,10 @@ field_params = {
     "x0": 1.0
 }
 
-with open(results_dir / "parameters.json", "w") as f:
+with open(results_dir / f"parameters_{config_id}.json", "w") as f:
     json.dump(field_params, f, indent=4)
 
-print(f"Parameters saved to {results_dir / 'parameters.json'}")
+print(f"Parameters saved to {results_dir}")
 
 field = SlabBfieldTwoPert(**field_params)
 
@@ -40,20 +40,6 @@ xs2 = field.x0 + field.n2 / (field.iota_prime * field.m2)
 
 map = ToroidalBfieldSection(field, domain=[(0, 2), (0, 2*np.pi)])
 
-pplot = PoincarePlot.with_segments(
-    map,
-    np.array([
-        [0.05, np.pi/2],
-        [1.95, np.pi/2],
-        [0.05, 3*np.pi/2],
-        [1.95, 3*np.pi/2]
-    ]),
-    neps=[50, 50],
-    connected=False,
-)
-
-# Follow each initial condition for 200 crossings
-pplot.compute(npts=150)
 
 # Fixed points:
 fp1 = FixedPoint(map)
@@ -144,7 +130,7 @@ stable6, unstable6 = manifold6.compute_adaptive2(tol=2e-3, n_u_extra=1, n_s_extr
 
 # Save manifold arrays
 np.savez_compressed(
-    results_dir / "manifolds.npz",
+    results_dir / f"manifolds_{config_id}.npz",
     stable1=stable1,
     unstable1=unstable1,
     stable2=stable2,
@@ -159,31 +145,4 @@ np.savez_compressed(
     unstable6=unstable6
 )
 
-print(f"Manifold results saved to {results_dir / 'manifolds.npz'}")
-
-fig, ax = pplot.plot(marker=".", s=0.5, xlim=[.0, 2.], plottype=None)
-
-ax.plot(stable1[:, 0], stable1[:, 1], color="blue", label="Stable", marker=".", markersize=3, linestyle="")
-ax.plot(unstable1[:, 0], unstable1[:, 1], color="red", label="Unstable", marker=".", markersize=3, linestyle="")
-
-ax.plot(stable2[:, 0], stable2[:, 1], color="blue", label="Stable", marker=".", markersize=3, linestyle="")
-ax.plot(unstable2[:, 0], unstable2[:, 1], color="red", label="Unstable", marker=".", markersize=3, linestyle="")
-
-ax.plot(stable3[:, 0], stable3[:, 1], color="blue", label="Stable", marker=".", markersize=3, linestyle="")
-ax.plot(unstable3[:, 0], unstable3[:, 1], color="red", label="Unstable", marker=".", markersize=3, linestyle="")
-
-ax.plot(stable4[:, 0], stable4[:, 1], color="blue", label="Stable", marker=".", markersize=3, linestyle="")
-ax.plot(unstable4[:, 0], unstable4[:, 1], color="red", label="Unstable", marker=".", markersize=3, linestyle="")
-
-ax.plot(stable5[:, 0], stable5[:, 1], color="blue", label="Stable", marker=".", markersize=3, linestyle="")
-ax.plot(unstable5[:, 0], unstable5[:, 1], color="red", label="Unstable", marker=".", markersize=3, linestyle="")
-
-ax.plot(stable6[:, 0], stable6[:, 1], color="blue", label="Stable", marker=".", markersize=3, linestyle="")
-ax.plot(unstable6[:, 0], unstable6[:, 1], color="red", label="Unstable", marker=".", markersize=3, linestyle="")
-
-# Save figure
-fig.savefig(results_dir / "manifolds.png", dpi=300, bbox_inches="tight")
-
-print(f"Figure saved to {results_dir / 'manifolds.png'}")
-
-plt.close(fig)
+print(f"Manifold results saved to {results_dir}")
