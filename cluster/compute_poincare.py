@@ -17,8 +17,8 @@ def compute_poincare(config_id, BC=1, npts_initial=50, npts_crossings=150):
 
     # Load configuration parameters from JSON
     params_path = (
-        cluster_dir / "manifold_results"
-        / f"config_{config_id}" / "parameters.json"
+        cluster_dir / "configurations/parameters"
+        / f"parameters_{config_id}.json"
     )
 
     with open(params_path, "r", encoding="utf-8") as f:
