@@ -5,6 +5,7 @@ literature/
 local/num_results_loc/
 cluster/num_results/
 cluster/manifold_results/
+cluster/poincare_plots
 
 # Python virtual environment
 local/.venv/
