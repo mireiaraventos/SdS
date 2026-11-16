@@ -16,5 +16,6 @@ cluster/logs/
 cluster/manifold_test_results/
 
 # Other files
-present_results.pptx
+present_results_ind.pptx
+present_results_subfigs.pptx
 Configurations.xlsx
