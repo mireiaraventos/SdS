@@ -3,7 +3,7 @@
 #SBATCH --partition=academic
 #SBATCH --qos=academic
 #SBATCH --array=1-100%60
-#SBATCH --time=05:00:00
+#SBATCH --time=50:00:00
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=8G
 #SBATCH --output=logs/tpiv_%A_%a.out
@@ -15,7 +15,7 @@ cd ~/SdS/cluster
 mkdir -p logs num_results
 
 # Symmetric two-island cases: delta1 = delta2
-# DELTAS=(0.7 0.6 0.2 0.1)
+# DELTAS=(0.7 0.6 0.5 0.4 0.3 0.2 0.1)
 DELTAS=(0.05 0.1 0.2 0.3 0.4 0.5)
 
 # k_para = 10^k_exp
