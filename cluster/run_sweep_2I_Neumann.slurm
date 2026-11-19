@@ -16,14 +16,15 @@ mkdir -p logs num_results
 
 # Symmetric two-island cases: delta1 = delta2
 # DELTAS=(0.7 0.6 0.5 0.4 0.3 0.2 0.1)
-DELTAS=(0.05 0.1 0.2 0.3 0.4 0.5)
+# DELTAS=(0.05 0.1 0.2 0.3 0.4 0.5)
+DELTAS=(0.3 0.5 0.6 0.7 0.8 0.9)
 
 # k_para = 10^k_exp
 KEXPS=(4.0 6.0 8.0 10.0 12.0)
 
 # Iota values
 # IOTAS=(2.0 2.2 2.4 2.6 2.8 3.0 3.2 3.4 3.6 3.8)
-IOTAS=(4.0)
+IOTAS=(2.0)
 
 NX=201
 
