@@ -118,17 +118,22 @@ INPUT .\introduction.tex
 INPUT introduction.tex
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr12.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmmi10.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmsy10.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmex10.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT .\magnetic_configs.tex
+INPUT .\magnetic_configs.tex
+INPUT .\magnetic_configs.tex
+INPUT .\magnetic_configs.tex
+INPUT magnetic_configs.tex
 INPUT .\anisotropic_diffusion.tex
 INPUT .\anisotropic_diffusion.tex
 INPUT .\anisotropic_diffusion.tex
 INPUT .\anisotropic_diffusion.tex
 INPUT anisotropic_diffusion.tex
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmmi10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmsy10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmex10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT .\manifolds.tex
 INPUT .\manifolds.tex
 INPUT .\manifolds.tex

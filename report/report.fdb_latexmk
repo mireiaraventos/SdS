@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1795027439.11169 "c:/Users/mirei/OneDrive - epfl.ch/MA3/SdS/report/report.tex" "report.pdf" "report" 1795027440.28281 0
+["pdflatex"] 1795104090.93755 "c:/Users/mirei/OneDrive - epfl.ch/MA3/SdS/report/report.tex" "report.pdf" "report" 1795104092.14176 0
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1233951848 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1233951854 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -66,13 +66,14 @@
   "C:/Program Files/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "C:/Users/mirei/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1746952566 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/mirei/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1746952941 24215231 5faf97b50206d16757f0826596cc19ae ""
-  "anisotropic_diffusion.tex" 1795027438 358 450f8ba63f12e3247d4bf210c4103fe2 ""
-  "c:/Users/mirei/OneDrive - epfl.ch/MA3/SdS/report/report.tex" 1795026596 1175 db8d12ff30a86be5db13ddf51ba8c3aa ""
+  "anisotropic_diffusion.tex" 1795104006 402 8ec1dcf2e8a0d56824a282788f83f21e ""
+  "c:/Users/mirei/OneDrive - epfl.ch/MA3/SdS/report/report.tex" 1795103887 1201 4c13db9b7047512f256bfd6046b60cfc ""
   "conclusions.tex" 1795026582 21 962245b29278b6028e8e709db79a2139 ""
-  "introduction.tex" 1795026180 50 9c144fd57c2df577e3e5c65917c036cd ""
-  "manifolds.tex" 1795027221 377 63e6ff6cd9c5809826fcc9861961ab97 ""
-  "report.aux" 1795027440 1586 99c7bec05616ad97a4b6ebd13c1143f1 "pdflatex"
-  "report.tex" 1795026596 1175 db8d12ff30a86be5db13ddf51ba8c3aa ""
+  "introduction.tex" 1795103840 242 0655ab970f3a441ef4b4445f89c8ce9e ""
+  "magnetic_configs.tex" 1795103966 164 474ba430570cd2624195bf1c8101ed0b ""
+  "manifolds.tex" 1795104088 537 a1c71ab7553d2d6433229ac3310351e4 ""
+  "report.aux" 1795104091 1942 75fd83ba9aca45d93560f88e660e226f "pdflatex"
+  "report.tex" 1795103887 1201 4c13db9b7047512f256bfd6046b60cfc ""
   (generated)
   "report.aux"
   "report.log"
