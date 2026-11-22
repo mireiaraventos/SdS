@@ -1,4 +1,36 @@
 \section{Magnetic topology and field-line dynamics}
-Slab model\\
-Magnetic field-line mapping and Poincaré sections\\
+\subsection{Slab model}
+In this work, I have considered a simplified planar representation of the toroidal geometry to study the effects of magnetic topology on heat transport. Starting from the toroidal coordinates $(r, \theta, \phi)$, $\theta$ and $\phi$ denoting the poloidal and toroidal angles, the torus is first mapped onto a cylinder by replacing the toroidal angle with a periodic coordinate $z\in[0,2\pi)$. The cylinder is then unfolded into a planar domain described by the coordinates $x$ and $y$, which play the role of the radial coordinate and polidal angle, respectively, with $y\in[0,2\pi)$.
+
+Having a magnetic field $\mathbf{B}=(B_x, B_y, B_z)$, the magnetic topology can be studied by tracing the field lines through the domain. This requires integrating the field-line equations
+\begin{equation}
+    \left.\frac{dx}{dz}\right|_{\text{along }\mathbf{B}}=\frac{B_x}{B_z}\quad\text{and}\quad \left.\frac{dx}{dz}\right|_{\text{along }\mathbf{B}}=\frac{B_y}{B_z}\,,
+\end{equation} 
+which is usually done numerically using standard ODE integration methods.
+A good way to visualize the magnetic field is to construct a Poincaré section, which consists of the intersection of the field lines with a plane at a fixed $z$ \cite{}. As seen in figure ..., in a Poincaré section, regular magnetic surfaces appear as closed curves, whereas magnetic islands and chaotic regions generate characteristic point patterns.
+
+\subsection{Magnetic islands and chaos}
+In magnetic confinement devices, the predominantly toroidal magnetic field is supplemented by a smaller poloidal component in order to achieve plasma confinement. To measure the helicity of such a field around the toroidal axis, we use the rotational transform, which is a ratio of the number of poloidal turns completed by a field line in one toroidal turn \cite{}. In the slab geometry considered here, the rotational transform reads
+\begin{equation} \label{iota}
+    \iota = \frac{B_y}{B_z}\,.
+\end{equation}
+In tokamaks it is conventional to use the inverse of the rotational transform, the safety factor, $q=\iota^{-1}$ \cite{}.
+
+From the rotational transform we can identify rational surfaces, for which $\iota=n/m\in\mathbb{Q}$. In such a surface, a magnetic field line closes upon itself after completing $n$ poloidal turns and $m$ toroidal turns.
+
+When a perturbation resonates with a rational number of the rotational transform, magnetic island structures appear at the rational surface. This is the case shown in figure ..., described by a perturbed magnetic field of the form
+\begin{equation}\label{B_ct_ampl}
+\begin{cases}
+	B_x = m\epsilon(x)\sin\alpha\\
+	B_y = \iota'(x-x_0) + \epsilon'(x)\cos\alpha\\
+	B_z = 1
+\end{cases} 
+\end{equation}
+where $\epsilon(x)=\delta\cdot x(1-x)$ is the amplitude of the perturbation, $m$ and $n$ are the poloidal and toroidal mode numbers, respectively, and $\alpha=my-nz$. In this work we have always taken a linear rotational transform of the form $\iota(x)=\iota'(x-x_0)$, with a constant magnetic shear $\iota'\equiv\frac{d\iota}{dx}$. The perturbation is then resonant with the rational surface located at
+\begin{equation}\label{x_s}
+x_s=x_0+\frac{n}{\iota'm}\,,
+\end{equation}
+for which $\iota(x_s)=\frac{n}{m}$.
+
+
 Magnetic configurations with two resonances
