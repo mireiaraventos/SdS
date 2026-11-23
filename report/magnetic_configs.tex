@@ -2,7 +2,7 @@
 \subsection{Slab model}
 In this work, I have considered a simplified planar representation of the toroidal geometry to study the effects of magnetic topology on heat transport. Starting from the toroidal coordinates $(r, \theta, \phi)$, $\theta$ and $\phi$ denoting the poloidal and toroidal angles, the torus is first mapped onto a cylinder by replacing the toroidal angle with a periodic coordinate $z\in[0,2\pi)$. The cylinder is then unfolded into a planar domain described by the coordinates $x$ and $y$, which play the role of the radial coordinate and polidal angle, respectively, with $y\in[0,2\pi)$.
 
-In this geometry, any divergence-free magnetic field $\mathbf{B}=(B_x, B_y, B_z)$ can be represented in the means of a flux function $\psi(x,y,z)$:
+In this geometry, any divergence-free magnetic field $\mathbf{B}=(B_x, B_y, B_z)$ can be represented in the means of a flux function $\psi(x,y,z)$
 \begin{equation}\label{B}
 	\mathbf{B}=\hat{\mathbf{z}}+\hat{\mathbf{z}}\times\boldsymbol{\nabla}\psi\,,
 \end{equation}
@@ -14,18 +14,20 @@ The magnetic topology of such a field can be studied by tracing the field lines 
 \end{equation} 
 which is usually done numerically using standard ODE integration methods.
 
-A good way to visualize the magnetic field is to construct a Poincaré section, which consists of the intersection of the field lines with a plane at a fixed $z$ \cite{}. As seen in figure ..., in a Poincaré section, regular magnetic surfaces appear as closed curves, whereas magnetic islands and chaotic regions generate characteristic point patterns.
+A good way to visualize the magnetic field is to construct a Poincaré section, which consists of the intersection of the field lines with a plane at a fixed $z$ \cite{}. As seen in figure ..., in a Poincaré section we can easily identify regular magnetic surfaces and magnetic islands as closed curves, as well as the characteristic point patterns of chaotic regions.
 
 \subsection{Magnetic islands and chaos}
-In magnetic confinement devices, the predominantly toroidal magnetic field is supplemented by a smaller poloidal component in order to achieve plasma confinement. To measure the helicity of such a field around the toroidal axis, we use the rotational transform, which is a ratio of the number of poloidal turns completed by a field line in one toroidal turn \cite{}. In the slab geometry considered here, the rotational transform reads
+In magnetic confinement devices, the predominantly toroidal magnetic field is supplemented by a smaller poloidal component in order to achieve plasma confinement. The helicity of the field around the toroidal axis is measured by the rotational transform, which is a ratio of the number of poloidal turns completed by a field line in one toroidal turn \cite{}. In the slab geometry considered here, the rotational transform reads
 \begin{equation} \label{iota}
     \iota = \frac{B_y}{B_z}\,.
 \end{equation}
 In tokamaks, it is conventional to use the inverse of the rotational transform, the safety factor, $q=\iota^{-1}$ \cite{}.
 
-From the rotational transform we can identify rational surfaces, for which $\iota=n/m\in\mathbb{Q}$. In such a surface, a magnetic field line closes upon itself after completing $n$ poloidal turns and $m$ toroidal turns.
+From the rotational transform we can identify rational surfaces, for which $\iota=n/m\in\mathbb{Q}$. In such surfaces, a magnetic field line closes upon itself after completing $n$ poloidal turns and $m$ toroidal turns.
 
-When a perturbation resonates with a rational number of the rotational transform, magnetic island structures appear at the rational surface. This is the case shown in figure ..., in which the equilibrium configuration $\psi_0(x)$ is disorted by a perturbation $\psi_1(x,y,z)$:
+\textcolor{red}{2 referències a la mateixa figura (plot d'una illa)}
+
+A perturbation resonating with a rational number of the rotational transform causes the apparition of magnetic island structures at the rational surface. This is the case shown in figure ..., which has been obtained by disorting the equilibrium configuration $\psi_0(x)$ with a perturbation $\psi_1(x,y,z)$:
 \begin{equation}
 	\psi=\psi_0(x)+\psi_1(x,y,z)\,,
 \end{equation}
@@ -48,12 +50,16 @@ The corresponding magnetic field is
 	B_z = 1
 \end{cases} 
 \end{equation}
+The resulting magnetic island is shown in figure ..., with the last closed contour, called separatrix, marked in red. The width of the island \cite{}, computed as the maximum separation of the two branches of the separatrix in the x direction, can be estimated as 
+\begin{equation}\label{W}
+	W=4\sqrt{\frac{\epsilon(x_s)}{\iota'}}=2\sqrt{\frac{\delta}{\iota'}}\,.
+\end{equation}
 
 We can now consider the superposition of two perturbations, which will generate two magnetic island chains:
 \begin{equation}
 	\psi_1(x,y,z)=\sum_{i=1}^2\epsilon_i(x)\cos\alpha_i\,.
 \end{equation}
-The amplitude functions, $\epsilon_i(x)=\delta_i\cdot x(x-2)/4$ with $i=\lbrace1,2\rbrace$, are such that the perturbations extinguish at the domain limits $x\in[0,2]$.
+The amplitude functions, $\epsilon_i(x)=\delta_i\cdot x(x-2)/4$ with $i=\lbrace1,2\rbrace$, are such that the perturbations extinguish at the limits of the domain $x\in[0,2]$.
 
 The resulting magnetic field is
 \begin{equation}\label{B_two_pert}
@@ -65,5 +71,10 @@ The resulting magnetic field is
 \end{equation}
 As shown in figures ..., each perturbation generates an island chain centered on its corresponding rational surface, given by the poloidal and toroidal mode numbers $m_i$ and $n_i$ with $i=\lbrace1,2\rbrace$, according to (\ref{x_s}).
 
-In some cases, the two island chains may interact with each other, resulting in the loss of the structure of the magnetic surfaces and the appearence of a region of chaotic magnetic field lines. The Chirikov criterion states that stochasticity develops when neighboring magnetic islands overlap, meaning that the sum of the width of such islands is larger than the separation of the rational surfaces \cite{}.
+In some cases, the two island chains may interact with each other, resulting in the loss of the structure of the magnetic surfaces and the appearence of a region of chaotic magnetic field lines. The Chirikov criterion \cite{} states that stochasticity develops when neighboring magnetic islands overlap:
+
+\begin{equation}\label{Chirikov_crit}
+k=\frac{W_r}{\Delta x_s}>1;\text{ with }W_r=\frac{W_1+W_2}{2}\,,\;\Delta x_s=|x_{s,1}-x_{s,2}|\,,
+\end{equation}
+where $W_i$ denotes the width of the island $i$, $x_{s,i}$ is the position of its center, and $k$ is the Chirikov parameter.
 

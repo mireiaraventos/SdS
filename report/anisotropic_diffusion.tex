@@ -1,5 +1,7 @@
 \section{Anisotropic heat transport}
 \subsection{The anisotropic heat diffusion equation}
+\textcolor{red}{Quasi $100\%$ igual que report TPIV}
+
 In magnetized plasmas, particle transport along the magnetic field lines is much more effective than that across the field lines. As a result, heat transport is highly anisotropic, and is often modeled using distinct diffusion coefficients for the directions parallel and perpendicular to the unperturbed magnetic field $\mathbf{B_0}$, which usually differ by several orders of magnitude.
 
 The heat flux in a plasma is described by 
@@ -23,6 +25,33 @@ Then the evolution of the temperature in the plasma is described by the anisotro
 Since the ratio $\kappa_\parallel/\kappa_\perp$ can exceed $10^{10}$ in magnetized fusion plasmas \cite{}, parallel temperature gradients relax much faster than perpendicular ones. Therefore we expect magnetic surfaces to act as barriers to heat transport in steady state. On the other hand, magnetic islands and chaotic regions are presumed to exhibit nearly flattened temperature profiles \cite{}. Assessing the validity of these assumptions is the main objective of this work.
 
 \subsection{Numerical methodology: FaADE for solving the anisotropic diffusion equation}
-Neumann BC
+\textcolor{red}{Quasi $100\%$ igual que report TPIV}
+
+In this work we use the Julia package \texttt{FaADE.jl}, which implements the numerical method proposed by \cite{Muir} for solving the ADE in magnetic fields confined to a periodic box. The method rewrites Eq. (\ref{T_diff}) as the sum of perpendicular and parallel diffusion operators,
+\begin{equation}\label{T_diff_FaADE}
+\frac{\partial T}{\partial t} = \boldsymbol{\nabla}\cdot(\kappa_\perp\boldsymbol{\nabla}T)+\boldsymbol{\nabla}\cdot\left[(\kappa_\parallel-\kappa_\perp)\boldsymbol{\nabla}_\parallel T\right]\equiv \mathcal{P}_\perp T + \mathcal{P}_\parallel T\,,
+\end{equation}
+where $\mathcal{P}_\parallel$ and $\mathcal{P}_\perp$ denote the two operators. In \texttt{FaADE.jl}, the two operators are discretized separately using different numerical schemes and subsequently combined in a stable manner. Since the ratio $\kappa_\parallel/\kappa_\perp$ controls the relative importance of parallel and perpendicular transport, we fix $\kappa_\perp=1$ throughout this work and vary $\kappa_\parallel$.
+
+Working in slab geometry, Neumann boundary conditions are imposed in the $x$ direction,
+\begin{equation}
+    \left.\frac{\partial T}{\partial x}\right|_{x_\text{boundary}}=1\,;
+\end{equation}
+while periodic boundary conditions are imposed in the $y$ and $z$ directions, in order to mimic the toroidal geometry. The initial temperature profile is chosen as a linear gradient in the radial direction,
+\begin{equation}\label{T_IC}
+T(x,y,z,t=0)=x\,.
+\end{equation}
+
+
+To analyse the influence of magnetic topology on heat transport, the temperature field is evolved up to a final time $t_f$ and then sampled on a Poincaré section, allowing the solution to be represented in the $(x,y)$ plane. An example of the resulting temperature profile in the presence of a magnetic island is shown in Fig. ... .
+
+A particularly useful diagnostic is the temperature profile along the line $y=\pi$, corresponding to the center of the magnetic island:
+\[
+T(x)\equiv T(x,y=\pi,t_f).
+\]
+Comparing this profile with the magnetic surface structure makes it possible to identify the influence of magnetic islands and stochastic regions on heat transport, as shown in figure ... .
+
 \subsection{Heat transport across two magnetic islands / Temperature flattening and limitations of the Chirikov criterion}
-Temperature flattening in chaotic magnetic regions and limitations of the Chirikov criterion.
+As already stated before, due to the high anisotropy of heat diffusion, in unperturbed magnetic configurations the temperature is a function of the magnetic flux surfaces. In the cases with one perturbation, if the width of the island is sufficiently large, we expect the temperature profile to flatten within the island separatrix \cite{}.
+
+The situation gets interesting when analyzing the cases with two magnetic island chains. As long as the islands are separated enough so that they both maintain their structure, i.e. a small Chirikov parameter $k<1$, the temperature profile remains a function of the flux surfaces except across each of the islands, where it flattens. But as the islands start to overlap and the magnetic surfaces break down into a chaotic region with no apparent structure, we would expect the temperature to be homogeneous throughout it. Thus, we would think that the Chirikov criterion for determining the appearence of chaos in the field lines should also work as a criterion for temperature flattening. But this is not the case: as shown in figure ..., the temperature only really flattens in configurations with strong overlapping $k>1$, but there is a temperature gradient within the stochastic region in configurations close to the overlap threshold $k\sim 1$. So, from these results it is obvious that there are some "hidden" transport barriers, that can't be identified by only looking at the structure of the chaotic region. 
