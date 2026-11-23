@@ -1,5 +1,27 @@
 \section{Anisotropic heat transport}
-\subsection{The anisotropic heat diffusion}
+\subsection{The anisotropic heat diffusion equation}
+In magnetized plasmas, particle transport along the magnetic field lines is much more effective than that across the field lines. As a result, heat transport is highly anisotropic, and is often modeled using distinct diffusion coefficients for the directions parallel and perpendicular to the unperturbed magnetic field $\mathbf{B_0}$, which usually differ by several orders of magnitude.
+
+The heat flux in a plasma is described by 
+\begin{equation}
+    \mathbf{q}=-\kappa_\parallel\boldsymbol{\nabla}_\parallel T - \kappa_\perp\boldsymbol{\nabla}_\perp T\,,
+\end{equation}
+where $\kappa_\parallel$ and $\kappa_\perp$ denote the parallel and perpendicular diffusion coefficients, which are assumed to be constant trhoughout this work. Here,
+\begin{equation}
+    \mathbf{b}=\frac{\mathbf{B_0}}{B_0}\approx\frac{\mathbf{B_0}}{B_{0,z}}
+\end{equation}
+is the unit vector parallel to the equilibrium magnetic field. The parallel and perpendicular temperature gradients are defined as
+\begin{align}
+    &\boldsymbol{\nabla}_\parallel T=(\mathbf{b}\cdot\boldsymbol{\nabla}T)\mathbf{b}\\
+    &\boldsymbol{\nabla}_\perp T = \boldsymbol{\nabla} T - \boldsymbol{\nabla}_\parallel T\,.
+\end{align}
+Then the evolution of the temperature in the plasma is described by the anisotropic diffusion equation:
+\begin{equation}
+    \frac{\partial T}{\partial t}=-\boldsymbol{\nabla}\cdot\mathbf{q}=\boldsymbol{\nabla}\cdot(\kappa_\parallel\boldsymbol{\nabla}_\parallel T + \kappa_\perp\boldsymbol{\nabla}_\perp T)\,.
+\end{equation}
+
+Since the ratio $\kappa_\parallel/\kappa_\perp$ can exceed $10^{10}$ in magnetized fusion plasmas \cite{}, parallel temperature gradients relax much faster than perpendicular ones. Therefore we expect magnetic surfaces to act as barriers to heat transport in steady state. On the other hand, magnetic islands and chaotic regions are presumed to exhibit nearly flattened temperature profiles \cite{}. Assessing the validity of these assumptions is the main objective of this work.
+
 \subsection{Numerical methodology: FaADE for solving the anisotropic diffusion equation}
 Neumann BC
 \subsection{Heat transport across two magnetic islands / Temperature flattening and limitations of the Chirikov criterion}

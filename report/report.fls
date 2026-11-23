@@ -132,6 +132,12 @@ INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx8.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx6.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmmib10.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmmib8.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmmib6.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbsy10.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmbsy8.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmbsy6.tfm
 OUTPUT report.pdf
 INPUT C:\Users\mirei\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
 INPUT .\anisotropic_diffusion.tex
@@ -150,6 +156,8 @@ INPUT .\conclusions.tex
 INPUT .\conclusions.tex
 INPUT conclusions.tex
 INPUT report.aux
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmbsy10.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmbsy10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb

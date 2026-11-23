@@ -2,11 +2,18 @@
 \subsection{Slab model}
 In this work, I have considered a simplified planar representation of the toroidal geometry to study the effects of magnetic topology on heat transport. Starting from the toroidal coordinates $(r, \theta, \phi)$, $\theta$ and $\phi$ denoting the poloidal and toroidal angles, the torus is first mapped onto a cylinder by replacing the toroidal angle with a periodic coordinate $z\in[0,2\pi)$. The cylinder is then unfolded into a planar domain described by the coordinates $x$ and $y$, which play the role of the radial coordinate and polidal angle, respectively, with $y\in[0,2\pi)$.
 
-Having a magnetic field $\mathbf{B}=(B_x, B_y, B_z)$, the magnetic topology can be studied by tracing the field lines through the domain. This requires integrating the field-line equations
+In this geometry, any divergence-free magnetic field $\mathbf{B}=(B_x, B_y, B_z)$ can be represented in the means of a flux function $\psi(x,y,z)$:
+\begin{equation}\label{B}
+	\mathbf{B}=\hat{\mathbf{z}}+\hat{\mathbf{z}}\times\boldsymbol{\nabla}\psi\,,
+\end{equation}
+where the magnetic field has been normalized such that $B_z=1$.
+
+The magnetic topology of such a field can be studied by tracing the field lines through the domain. This requires integrating the field-line equations
 \begin{equation}
     \left.\frac{dx}{dz}\right|_{\text{along }\mathbf{B}}=\frac{B_x}{B_z}\quad\text{and}\quad \left.\frac{dx}{dz}\right|_{\text{along }\mathbf{B}}=\frac{B_y}{B_z}\,,
 \end{equation} 
 which is usually done numerically using standard ODE integration methods.
+
 A good way to visualize the magnetic field is to construct a Poincaré section, which consists of the intersection of the field lines with a plane at a fixed $z$ \cite{}. As seen in figure ..., in a Poincaré section, regular magnetic surfaces appear as closed curves, whereas magnetic islands and chaotic regions generate characteristic point patterns.
 
 \subsection{Magnetic islands and chaos}
@@ -14,23 +21,49 @@ In magnetic confinement devices, the predominantly toroidal magnetic field is su
 \begin{equation} \label{iota}
     \iota = \frac{B_y}{B_z}\,.
 \end{equation}
-In tokamaks it is conventional to use the inverse of the rotational transform, the safety factor, $q=\iota^{-1}$ \cite{}.
+In tokamaks, it is conventional to use the inverse of the rotational transform, the safety factor, $q=\iota^{-1}$ \cite{}.
 
 From the rotational transform we can identify rational surfaces, for which $\iota=n/m\in\mathbb{Q}$. In such a surface, a magnetic field line closes upon itself after completing $n$ poloidal turns and $m$ toroidal turns.
 
-When a perturbation resonates with a rational number of the rotational transform, magnetic island structures appear at the rational surface. This is the case shown in figure ..., described by a perturbed magnetic field of the form
-\begin{equation}\label{B_ct_ampl}
+When a perturbation resonates with a rational number of the rotational transform, magnetic island structures appear at the rational surface. This is the case shown in figure ..., in which the equilibrium configuration $\psi_0(x)$ is disorted by a perturbation $\psi_1(x,y,z)$:
+\begin{equation}
+	\psi=\psi_0(x)+\psi_1(x,y,z)\,,
+\end{equation}
+with
+\begin{align}
+	&\psi_0(x)=\frac{\iota'}{2}(x-x_0)^2\,,\\
+	&\psi_1(x,y,z)=\epsilon(x)\cos\alpha\equiv\epsilon(x)\cos(my-nz)\,.
+\end{align}
+The perturbation amplitude $\epsilon(x)=\delta\cdot x(1-x)$ has been chosen to extinguish at the limits of the domain $x\in[0,1]$, and $m$ and $n$ are the poloidal and toroidal mode numbers. In this work we have always taken a linear rotational transform of the form $\iota(x)=\iota'(x-x_0)$, with a constant magnetic shear $\iota'\equiv\frac{d\iota}{dx}$. Then the rational surface is located at
+\begin{equation}\label{x_s}
+x_s=x_0+\frac{n}{\iota'm}\,,
+\end{equation}
+for which $\iota(x_s)=\frac{n}{m}$.
+
+The corresponding magnetic field is
+\begin{equation}\label{B_one_pert}
 \begin{cases}
 	B_x = m\epsilon(x)\sin\alpha\\
 	B_y = \iota'(x-x_0) + \epsilon'(x)\cos\alpha\\
 	B_z = 1
 \end{cases} 
 \end{equation}
-where $\epsilon(x)=\delta\cdot x(1-x)$ is the amplitude of the perturbation, $m$ and $n$ are the poloidal and toroidal mode numbers, respectively, and $\alpha=my-nz$. In this work we have always taken a linear rotational transform of the form $\iota(x)=\iota'(x-x_0)$, with a constant magnetic shear $\iota'\equiv\frac{d\iota}{dx}$. The perturbation is then resonant with the rational surface located at
-\begin{equation}\label{x_s}
-x_s=x_0+\frac{n}{\iota'm}\,,
+
+We can now consider the superposition of two perturbations, which will generate two magnetic island chains:
+\begin{equation}
+	\psi_1(x,y,z)=\sum_{i=1}^2\epsilon_i(x)\cos\alpha_i\,.
 \end{equation}
-for which $\iota(x_s)=\frac{n}{m}$.
+The amplitude functions, $\epsilon_i(x)=\delta_i\cdot x(x-2)/4$ with $i=\lbrace1,2\rbrace$, are such that the perturbations extinguish at the domain limits $x\in[0,2]$.
 
+The resulting magnetic field is
+\begin{equation}\label{B_two_pert}
+\begin{cases}
+	B_x = \sum_{i=1}^2m_i\epsilon_i(x)\sin\alpha_i \\
+	B_y = \iota'(x-x_0) + \sum_{i=1}^2\epsilon_i'(x)\cos\alpha_i\\
+	B_z = 1
+\end{cases} 
+\end{equation}
+As shown in figures ..., each perturbation generates an island chain centered on its corresponding rational surface, given by the poloidal and toroidal mode numbers $m_i$ and $n_i$ with $i=\lbrace1,2\rbrace$, according to (\ref{x_s}).
 
-Magnetic configurations with two resonances
+In some cases, the two island chains may interact with each other, resulting in the loss of the structure of the magnetic surfaces and the appearence of a region of chaotic magnetic field lines. The Chirikov criterion states that stochasticity develops when neighboring magnetic islands overlap, meaning that the sum of the width of such islands is larger than the separation of the rational surfaces \cite{}.
+
