@@ -2,7 +2,7 @@
 #SBATCH --job-name=poincare
 #SBATCH --partition=academic
 #SBATCH --qos=academic
-#SBATCH --array=124,125,126,127,128
+#SBATCH --array=135,136,137,138
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=4G
 #SBATCH --time=02:00:00
