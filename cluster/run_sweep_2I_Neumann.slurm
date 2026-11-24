@@ -3,7 +3,7 @@
 #SBATCH --partition=academic
 #SBATCH --qos=academic
 #SBATCH --array=1-100%60
-#SBATCH --time=50:00:00
+#SBATCH --time=100:00:00
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=8G
 #SBATCH --output=logs/tpiv_%A_%a.out
@@ -59,4 +59,6 @@ echo "=============================="
 
 # Run Julia simulation:
 # ARGS = delta1 delta2 k_para nx iota
-julia --project=. 2I_simulate_unif_grid_cluster_Neumann.jl $DELTA $DELTA $KPARA $NX $IOTA
+julia --compiled-modules=no --project=. \
+    2I_simulate_unif_grid_cluster_Neumann.jl \
+    "$DELTA" "$DELTA" "$KPARA" "$NX" "$IOTA"

@@ -4,8 +4,8 @@ using JLD2
 #using Revise
 
 
-Δt = 1e-4
-t_f = 5e-2
+Δt = 2e-4
+t_f = 12e-2
 
 
 δ1 = parse(Float64, ARGS[1]) # 0.01, 0.05, 0.1, 0.5
