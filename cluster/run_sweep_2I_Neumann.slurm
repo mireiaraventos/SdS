@@ -15,16 +15,19 @@ cd ~/SdS/cluster
 mkdir -p logs num_results
 
 # Symmetric two-island cases: delta1 = delta2
-# DELTAS=(0.7 0.6 0.5 0.4 0.3 0.2 0.1)
-# DELTAS=(0.05 0.1 0.2 0.3 0.4 0.5)
-DELTAS=(0.3 0.5 0.6 0.7 0.8 0.9)
+# DELTAS=(0.1 0.2 0.225 0.25 0.275 0.3 0.4 0.5)
+# IOTAS=(4.0)
+
+# DELTAS=(0.7 0.6 0.5 0.4 0.375 0.35 0.325 0.3 0.2 0.1)
+# IOTAS=(3.0)
+
+DELTAS=(0.3 0.5 0.55 0.575 0.6 0.625 0.65 0.7 0.8 0.9)
+IOTAS=(2.0)
+
+M1=1
 
 # k_para = 10^k_exp
-KEXPS=(4.0 6.0 8.0 10.0 12.0)
-
-# Iota values
-# IOTAS=(2.0 2.2 2.4 2.6 2.8 3.0 3.2 3.4 3.6 3.8)
-IOTAS=(2.0)
+KEXPS=(8.0 10.0 12.0)
 
 NX=201
 
@@ -55,10 +58,11 @@ echo "k_exp = $KEXP"
 echo "k_para = $KPARA"
 echo "iota = $IOTA"
 echo "nx = $NX"
+echo "m1 = $M1"
 echo "=============================="
 
 # Run Julia simulation:
 # ARGS = delta1 delta2 k_para nx iota
 julia --compiled-modules=no --project=. \
     2I_simulate_unif_grid_cluster_Neumann.jl \
-    "$DELTA" "$DELTA" "$KPARA" "$NX" "$IOTA"
+    "$DELTA" "$DELTA" "$KPARA" "$NX" "$IOTA" "$M1"
