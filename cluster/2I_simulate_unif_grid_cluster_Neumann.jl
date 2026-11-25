@@ -5,7 +5,7 @@ using JLD2
 
 
 Δt = 2e-4
-t_f = 12e-2
+t_f = 20e-2
 
 
 δ1 = parse(Float64, ARGS[1]) # 0.01, 0.05, 0.1, 0.5
@@ -42,12 +42,12 @@ println("Solving for δ1 = $δ1, δ2 = $δ2")
 #=== PARALLEL MAP ===#
 xₛ = 1.0  # Island position
 
-function B(X, x, p, t) # x = [x, y]; t = z; # X = B(x)
-    m1 = 1
-    n1 = -1
-    m2 = 1
-    n2 = 1
+m1 = parse(Int, ARGS[6])
+n1 = -1
+m2 = 1
+n2 = 1
 
+function B(X, x, p, t) # x = [x, y]; t = z; # X = B(x)
     X[1] = δ1*x[1]*(2-x[1])*0.25*m1*sin(m1*x[2]-n1*t) + δ2*x[1]*(2-x[1])*0.25*m2*sin(m2*x[2]-n2*t)
     X[2] = iota*(x[1]-xₛ) + δ1*(2-2*x[1])*0.25*cos(m1*x[2]-n1*t) + δ2*(2-2*x[1])*0.25*cos(m2*x[2]-n2*t)
 end
@@ -79,7 +79,7 @@ u_mid = vcat(soln.u[2][:, midy])
 
 
 save(
-    "num_results/2I_k$(exp_k)_tf$(t_f)_d$(δ1)_$(δ2)_res$(nx)_m1_dT_iota$(iota)_Neumann.jld2",
+    "num_results/2I_k$(exp_k)_tf$(t_f)_d$(δ1)_$(δ2)_res$(nx)_m$(m1)_dT_iota$(iota)_Neumann.jld2",
     "soln", soln,
     "x_mid", x_mid,
     "u_mid", u_mid,
