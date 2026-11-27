@@ -15,16 +15,20 @@ cd ~/SdS/cluster
 mkdir -p logs num_results
 
 # Symmetric two-island cases: delta1 = delta2
+
+# M1=1
 # DELTAS=(0.1 0.2 0.225 0.25 0.275 0.3 0.4 0.5)
 # IOTAS=(4.0)
 
 # DELTAS=(0.7 0.6 0.5 0.4 0.375 0.35 0.325 0.3 0.2 0.1)
 # IOTAS=(3.0)
 
-DELTAS=(0.3 0.5 0.55 0.575 0.6 0.625 0.65 0.7 0.8 0.9)
-IOTAS=(2.0)
+# DELTAS=(0.3 0.5 0.55 0.575 0.6 0.625 0.65 0.7 0.8 0.9)
+# IOTAS=(2.0)
 
-M1=1
+M1=2
+DELTAS=(0.2 0.3 0.4 0.5 0.6 0.7)
+IOTAS=(3.0)
 
 # k_para = 10^k_exp
 KEXPS=(8.0 10.0 12.0)
